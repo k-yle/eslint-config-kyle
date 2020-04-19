@@ -18,5 +18,9 @@ module.exports = {
   rules: {
     ...require("./rules/commonRules"),
   },
-  overrides: [require("./rules/tsx"), require("./rules/jest")],
+  overrides: [
+    require("./rules/ts"),
+    require("./rules/tsx"),
+    require("./rules/jest"),
+  ],
 };

@@ -5,6 +5,10 @@ module.exports = {
   "guard-for-in": 0,
   "import/prefer-default-export": 0,
 
-  "no-unused-vars": [1, { caughtErrors: "all" }],
+  // our added rules
+  "prefer-object-spread": 1,
   "no-warning-comments": [1, { terms: ["fixme"], location: "anywhere" }],
+
+  // extend existing rules
+  "no-unused-vars": [1, { caughtErrors: "all" }],
 };
