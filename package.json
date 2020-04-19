@@ -6,7 +6,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --ignore-path .gitignore ."
+    "test": "eslint --ignore-path .gitignore .",
+    "trypublish": "npm publish || true"
   },
   "keywords": [
     "eslint",
@@ -14,10 +15,7 @@
     "config"
   ],
   "homepage": "https://github.com/k-yle/eslint-config-kyle",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/k-yle/eslint-config-kyle"
-  },
+  "repository": "https://github.com/k-yle/eslint-config-kyle",
   "bugs": {
     "url": "https://github.com/k-yle/eslint-config-kyle/issues"
   },
