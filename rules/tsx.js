@@ -1,24 +1,24 @@
 module.exports = {
-  files: ["**/*.tsx"],
+  files: ['**/*.tsx'],
   extends: [
-    "airbnb",
-    "airbnb/hooks",
-    "prettier",
-    "prettier/react",
-    "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended",
+    'airbnb',
+    'airbnb/hooks',
+    'prettier',
+    'prettier/react',
+    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:import/typescript',
   ],
-  parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "prettier"],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    ...require("./commonRules"),
+    ...require('./commonRules'),
 
-    "react/prop-types": 0,
-    "react/jsx-filename-extension": [1, { extensions: [".tsx"] }],
+    'react/prop-types': 0,
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     // ^ pointless since this config only runs for .tsx files
 
-    "import/extensions": 0,
-    "import/no-unresolved": 0,
-    "import/prefer-default-export": 0,
+    'import/extensions': [2, 'never'],
+    'import/no-unresolved': 0, // TODO: figure out how to make this work well
   },
 };

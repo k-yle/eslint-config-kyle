@@ -1,19 +1,18 @@
 module.exports = {
-  files: ["**/*.ts"],
+  files: ['**/*.ts'],
   extends: [
-    "airbnb",
-    "prettier",
-    "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended",
+    'airbnb-base',
+    'prettier',
+    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:import/typescript',
   ],
-  parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "prettier"],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    ...require("./commonRules"),
+    ...require('./commonRules'),
 
-    "react/jsx-filename-extension": [1, { extensions: [".tsx"] }],
-
-    "import/extensions": 0,
-    "import/no-unresolved": 0,
+    'import/extensions': [2, 'never'],
+    'import/no-unresolved': 0, // TODO: figure out how to make this work well
   },
 };
