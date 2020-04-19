@@ -12,4 +12,7 @@ module.exports = {
 
   // extend existing rules
   'no-unused-vars': [1, { caughtErrors: 'all' }],
+
+  // react
+  'react/jsx-props-no-spreading': 0,
 };
