@@ -26,6 +26,7 @@ jobs:
           CI: true
 
       - name: npm publish
+        if: ${{ github.ref == 'refs/heads/master' }}
         run: |
           npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
           npm run trypublish
