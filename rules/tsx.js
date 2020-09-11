@@ -12,9 +12,6 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    ...require('./commonRules'),
-
-    'import/extensions': [2, 'never'],
-    'import/no-unresolved': 0, // TODO: figure out how to make this work well
+    ...require('./ts').rules,
   },
 };
