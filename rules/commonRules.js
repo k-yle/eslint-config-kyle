@@ -23,4 +23,7 @@ module.exports = {
   'react/jsx-filename-extension': [1, { extensions: ['.js', '.tsx'] }],
 
   'jsx-a11y/click-events-have-key-events': 0,
+
+  // eslint-comments
+  'eslint-comments/no-unused-disable': 'error',
 };
