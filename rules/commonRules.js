@@ -12,6 +12,7 @@ module.exports = {
   // our added rules
   'prefer-object-spread': 1,
   'prefer-destructuring': 1,
+  '@typescript-eslint/prefer-optional-chain': 2,
   'no-warning-comments': [1, { terms: ['fixme'], location: 'anywhere' }],
 
   // extend existing rules
