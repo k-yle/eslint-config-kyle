@@ -1,8 +1,8 @@
 # eslint-config-kyle
+
 [![Build Status](https://github.com/k-yle/eslint-config-kyle/workflows/build/badge.svg)](https://github.com/k-yle/eslint-config-kyle/actions)
 [![npm version](https://badge.fury.io/js/eslint-config-kyle.svg)](https://badge.fury.io/js/eslint-config-kyle)
 ![code style](https://img.shields.io/badge/Code%20Style-Airbnb%20❤%20Prettier-pink.svg?style=flat)
-
 
 💚 The eslint config I use for all my side projects.
 
@@ -12,10 +12,13 @@
 npm i -D eslint-config-kyle
 ```
 
-Change your eslint config to:
+Add the following to package.json:
 
 ```json
-{ "extends": "kyle" }
+{
+  "eslintConfig": { "extends": "kyle" },
+  "prettier": "eslint-config-kyle/prettier"
+}
 ```
 
 You will need to use `.tsx` for all react-ts files. Using just `.ts` will not load the react rules.

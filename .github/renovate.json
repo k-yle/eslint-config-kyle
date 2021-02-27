@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "rangeStrategy": "bump",
+  "automerge": true,
+  "timezone": "Pacific/Auckland",
+  "node": { "enabled": false },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["on friday"]
+  },
+  "packageRules": [
+    { "bumpVersion": "patch", "updateTypes": ["patch"] },
+    { "bumpVersion": "minor", "updateTypes": ["minor"] },
+    { "bumpVersion": "major", "updateTypes": ["major"] }
+  ]
+}

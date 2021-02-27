@@ -3,6 +3,9 @@ module.exports = {
     '**/__tests__/*.test.js',
     '**/__tests__/*.test.ts',
     '**/__tests__/*.test.tsx',
+    '**/tests/*.test.js',
+    '**/tests/*.test.ts',
+    '**/tests/*.test.tsx',
   ],
   env: {
     jest: true,
