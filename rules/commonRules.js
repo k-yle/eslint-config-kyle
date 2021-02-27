@@ -6,6 +6,10 @@ module.exports = {
   'guard-for-in': 0,
   'import/prefer-default-export': 0,
 
+  // stricter than prettier
+  curly: [2, 'multi-line'],
+  'prefer-arrow-callback': 2,
+
   // for ts <reference /> comments
   'spaced-comment': [2, 'always', { markers: ['/'] }],
 

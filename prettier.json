@@ -1,5 +1,11 @@
 {
   "$schema": "http://json.schemastore.org/prettierrc",
   "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.jsonc",
+      "options": { "parser": "json5", "quoteProps": "preserve" }
+    }
+  ],
   "trailingComma": "all"
 }
