@@ -7,7 +7,7 @@
   "node": { "enabled": false },
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": ["on friday"]
+    "schedule": ["after 7am before 9am on friday"]
   },
   "packageRules": [
     { "bumpVersion": "patch", "updateTypes": ["patch"] },
