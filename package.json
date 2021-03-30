@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kyle",
-  "version": "2.19.0",
+  "version": "2.20.0",
   "author": "Kyle Hensel",
   "description": "A sharable eslint config that I use",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "url": "https://github.com/k-yle/eslint-config-kyle/issues"
   },
   "engines": {
-    "node": ">= 12"
+    "node": ">= v12.22.0"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.20.0",
