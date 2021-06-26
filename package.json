@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kyle",
-  "version": "2.49.0",
+  "version": "2.49.1",
   "author": "Kyle Hensel",
   "description": "A sharable eslint config that I use",
   "license": "MIT",
@@ -35,7 +35,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.3.1"
+    "prettier": "^2.3.2"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
