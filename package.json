@@ -20,7 +20,7 @@
     "url": "https://github.com/k-yle/eslint-config-kyle/issues"
   },
   "engines": {
-    "node": ">= v12.22.2"
+    "node": ">=12"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.28.1",
