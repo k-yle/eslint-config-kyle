@@ -5,6 +5,7 @@
   "automerge": true,
   "timezone": "Pacific/Auckland",
   "node": { "enabled": false },
+  "ignoreDeps": ["node"],
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["after 7am before 9am on friday"]
