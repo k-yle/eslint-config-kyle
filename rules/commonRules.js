@@ -27,6 +27,7 @@ module.exports = {
   'react/prop-types': 0,
   'react/react-in-jsx-scope': 0, // no longer needed as of react 16.14+
   'react/jsx-filename-extension': [1, { extensions: ['.js', '.tsx'] }],
+  'react/require-default-props': 0, // typescript handles this
 
   'jsx-a11y/click-events-have-key-events': 0,
 
