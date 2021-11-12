@@ -11,7 +11,11 @@ module.exports = {
     jest: true,
   },
   plugins: ['jest'],
-  extends: ['plugin:jest/recommended', 'plugin:jest/style'],
+  extends: [
+    'plugin:jest/recommended',
+    'plugin:jest/style',
+    'plugin:jest-formatting/recommended',
+  ],
   rules: {
     'import/no-extraneous-dependencies': 0, // in test files it's okay to require devDeps
     '@typescript-eslint/ban-ts-comment': [

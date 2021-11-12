@@ -5,6 +5,7 @@ module.exports = {
   'no-await-in-loop': 0,
   'guard-for-in': 0,
   'import/prefer-default-export': 0,
+  'no-promise-executor-return': 0, // don't need this if we have TS. just results in more verbose code
 
   // stricter than prettier
   curly: [2, 'multi-line'],
@@ -28,6 +29,10 @@ module.exports = {
   'react/react-in-jsx-scope': 0, // no longer needed as of react 16.14+
   'react/jsx-filename-extension': [1, { extensions: ['.js', '.tsx'] }],
   'react/require-default-props': 0, // typescript handles this
+  'react/function-component-definition': [
+    1, // when using typescript we always want arrow-functions
+    { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
+  ],
 
   'jsx-a11y/click-events-have-key-events': 0,
 
