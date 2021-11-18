@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kyle",
-  "version": "7.2.0",
+  "version": "7.3.0",
   "author": "Kyle Hensel",
   "description": "A sharable eslint config that I use",
   "license": "MIT",
@@ -23,8 +23,8 @@
     "node": ">=12"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.3.1",
-    "@typescript-eslint/parser": "^5.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
     "eslint-config-airbnb": "^19.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-formatter-pretty": "^4.1.0",
