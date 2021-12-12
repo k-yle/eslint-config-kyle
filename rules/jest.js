@@ -26,7 +26,6 @@ module.exports = {
     // extra jest rules
     'jest/consistent-test-it': [2, { fn: 'it' }],
     'jest/no-duplicate-hooks': 2,
-    'jest/no-expect-resolves': 2,
     'jest/prefer-hooks-on-top': 2,
     'jest/prefer-strict-equal': 2,
   },

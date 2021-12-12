@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kyle",
-  "version": "7.9.2",
+  "version": "7.9.3",
   "author": "Kyle Hensel",
   "description": "A sharable eslint config that I use",
   "license": "MIT",
