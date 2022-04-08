@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kyle",
-  "version": "8.18.1",
+  "version": "8.19.0",
   "author": "Kyle Hensel",
   "description": "A sharable eslint config that I use",
   "license": "MIT",
@@ -39,7 +39,7 @@
     "prettier": "^2.6.2"
   },
   "devDependencies": {
-    "eslint": "^8.12.0",
+    "eslint": "^8.13.0",
     "typescript": "^4.6.3"
   }
 }
