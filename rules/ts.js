@@ -15,6 +15,8 @@ module.exports = {
     'import/extensions': [2, 'never'],
     'import/no-unresolved': 0, // TODO: figure out how to make this work well
 
+    '@typescript-eslint/prefer-optional-chain': 2,
+
     // use TS variant of these rules
     'no-shadow': 0,
     '@typescript-eslint/no-shadow': 2,
