@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kyle",
-  "version": "9.8.3",
+  "version": "9.8.4",
   "author": "Kyle Hensel",
   "description": "A sharable eslint config that I use",
   "license": "MIT",
@@ -30,7 +30,7 @@
     "eslint-formatter-pretty": "^4.1.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^27.1.2",
+    "eslint-plugin-jest": "^27.1.3",
     "eslint-plugin-jest-formatting": "^3.1.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-prettier": "^4.2.1",
