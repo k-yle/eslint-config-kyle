@@ -1,3 +1,5 @@
+// @ts-check
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
   files: [
     '**/__tests__/*.test.js',
