@@ -15,6 +15,7 @@ module.exports = {
     ...require('./commonRules'),
 
     '@typescript-eslint/no-non-null-assertion': 0, // dumb rule
+    '@typescript-eslint/no-namespace': 0,
 
     'import/extensions': [2, 'never'],
     'import/no-unresolved': 0, // TODO: figure out how to make this work well
