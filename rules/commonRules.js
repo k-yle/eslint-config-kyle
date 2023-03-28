@@ -1,5 +1,5 @@
 // @ts-check
-/** @type {import("eslint").Linter.Config} */
+/** @type {import("eslint").Linter.Config['rules']} */
 module.exports = {
   // turn off crap
   'no-console': 0,
@@ -25,7 +25,7 @@ module.exports = {
   'spaced-comment': [2, 'always', { markers: ['/'] }],
 
   // our added rules
-  'prefer-reflect': 1,
+  'prefer-reflect': [1, { exceptions: ['delete'] }],
   'prefer-object-spread': 1,
   'prefer-exponentiation-operator': 2,
   'prefer-object-has-own': 2,
@@ -36,9 +36,6 @@ module.exports = {
   ],
 
   'no-warning-comments': [1, { terms: ['fixme'], location: 'anywhere' }],
-
-  // extend existing rules
-  'no-unused-vars': [1, { caughtErrors: 'all' }],
 
   // make react the first import in the file
   'import/order': [
@@ -80,4 +77,26 @@ module.exports = {
 
   // eslint-comments
   'eslint-comments/no-unused-disable': 'error',
+
+  '@typescript-eslint/no-non-null-assertion': 0, // dumb rule
+  '@typescript-eslint/no-namespace': 0,
+
+  'import/extensions': [2, 'never'],
+  'import/no-unresolved': 0, // TODO: figure out how to make this work with TS
+
+  '@typescript-eslint/no-duplicate-enum-values': 2,
+  '@typescript-eslint/prefer-ts-expect-error': 2,
+  '@typescript-eslint/prefer-optional-chain': 2,
+  '@typescript-eslint/prefer-for-of': 2,
+  '@typescript-eslint/unified-signatures': 2,
+
+  // use TS variant of these rules
+  'no-shadow': 0,
+  '@typescript-eslint/no-shadow': 2,
+
+  'no-use-before-define': 0,
+  '@typescript-eslint/no-use-before-define': 2,
+
+  'no-unused-vars': 0,
+  '@typescript-eslint/no-unused-vars': [2, { caughtErrors: 'all' }],
 };

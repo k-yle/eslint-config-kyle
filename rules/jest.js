@@ -1,24 +1,19 @@
 // @ts-check
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  files: [
-    '**/__tests__/*.test.js',
-    '**/__tests__/*.test.ts',
-    '**/__tests__/*.test.tsx',
-    '**/tests/*.test.js',
-    '**/tests/*.test.ts',
-    '**/tests/*.test.tsx',
-  ],
+  files: ['**/*.test.*', '**/*.cy.*'],
   env: {
     jest: true,
   },
   plugins: ['jest'],
   extends: [
+    ...require('./commonExtend'),
     'plugin:jest/recommended',
     'plugin:jest/style',
     'plugin:jest-formatting/recommended',
   ],
   rules: {
+    ...require('./commonRules'),
     'import/no-extraneous-dependencies': 0, // in test files it's okay to require devDeps
     '@typescript-eslint/ban-ts-comment': [
       'warn', // ts-nocheck and ts-expect-error are okay in unit tests

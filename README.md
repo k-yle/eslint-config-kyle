@@ -20,5 +20,3 @@ Add the following to package.json:
   "prettier": "eslint-config-kyle/prettier"
 }
 ```
-
-You will need to use `.tsx` for all react-ts files. Using just `.ts` will not load the react rules.
