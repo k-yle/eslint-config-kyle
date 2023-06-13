@@ -52,6 +52,7 @@ module.exports = {
     'warn',
     {
       selector:
+        // eslint-disable-next-line unicorn/string-content
         "ImportDeclaration[source.value='react'][specifiers.0.type='ImportDefaultSpecifier']",
       message: 'only import required functions from React',
     },
@@ -81,6 +82,16 @@ module.exports = {
   'import/extensions': [2, 'never'],
   'import/no-unresolved': 0, // TODO: figure out how to make this work with TS
 
+  'import/no-extraneous-dependencies': [
+    2,
+    {
+      // in test files & config files, it's okay to import devDeps
+      devDependencies: ['**/*.test.*', '**/*.cy.*', '**/*.config.*'],
+      optionalDependencies: false,
+      peerDependencies: false,
+    },
+  ],
+
   '@typescript-eslint/no-duplicate-enum-values': 2,
   '@typescript-eslint/prefer-ts-expect-error': 2,
   '@typescript-eslint/prefer-optional-chain': 2,
@@ -96,4 +107,35 @@ module.exports = {
 
   'no-unused-vars': 0,
   '@typescript-eslint/no-unused-vars': [2, { caughtErrors: 'all' }],
+
+  // 🦄 non-defaults
+  'unicorn/custom-error-definition': 2,
+  'unicorn/no-object-as-default-parameter': 2,
+  'unicorn/string-content': [
+    1,
+    {
+      patterns: {
+        // eslint-disable-next-line unicorn/string-content
+        '"': {
+          suggest: '“”',
+          message: 'Please use smart quotes in user-facing text',
+        },
+        // eslint-disable-next-line unicorn/string-content
+        "'": {
+          suggest: '‘’',
+          message: 'Please use smart quotes in user-facing text',
+        },
+        '\\.\\.\\.': {
+          suggest: '…',
+          message: 'Please use idiomatic typography in user-facing text',
+        },
+      },
+    },
+  ],
+
+  // 🦄 rules that would be disruptive to change, but are probably worthwhile
+  'unicorn/explicit-length-check': 0,
+  'unicorn/filename-case': 0,
+  'unicorn/no-nested-ternary': 0,
+  'unicorn/prefer-module': 0,
 };
