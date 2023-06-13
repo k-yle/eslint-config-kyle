@@ -75,9 +75,6 @@ module.exports = {
 
   'jsx-a11y/click-events-have-key-events': 0,
 
-  // eslint-comments
-  'eslint-comments/no-unused-disable': 'error',
-
   '@typescript-eslint/no-non-null-assertion': 0, // dumb rule
   '@typescript-eslint/no-namespace': 0,
 

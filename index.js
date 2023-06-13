@@ -11,7 +11,7 @@ module.exports = {
   },
   extends: require('./rules/commonExtend'),
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'prettier', 'eslint-comments'],
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: require('./rules/commonRules'),
   overrides: [require('./rules/jest')],
   settings: {
