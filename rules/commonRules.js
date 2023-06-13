@@ -111,31 +111,39 @@ module.exports = {
   // 🦄 non-defaults
   'unicorn/custom-error-definition': 2,
   'unicorn/no-object-as-default-parameter': 2,
-  'unicorn/string-content': [
+
+  // 🦄 relax strict rules
+  'unicorn/prevent-abbreviations': [
     1,
     {
-      patterns: {
-        // eslint-disable-next-line unicorn/string-content
-        '"': {
-          suggest: '“”',
-          message: 'Please use smart quotes in user-facing text',
-        },
-        // eslint-disable-next-line unicorn/string-content
-        "'": {
-          suggest: '‘’',
-          message: 'Please use smart quotes in user-facing text',
-        },
-        '\\.\\.\\.': {
-          suggest: '…',
-          message: 'Please use idiomatic typography in user-facing text',
-        },
+      replacements: {
+        temp: false, // well understood and never disambiguous. However, we do ban "tmp", as it's less readable and semantically equivilant to "temp"
+        env: false, // well understood and never disambiguous. The alternative is long and unwieldy
+        ref: false, // "ref" is different to "reference" in OSM, and is a well known term in react
+        str: false, // mappers/helpers that work on any arbitrary string should be allowed to use str
+        props: false, // "props" implies something different to "properties" in react. However, we do ban "prop" as it doesn't have a special meaning in the react world, unlike "props"
       },
+      checkFilenames: false, // so that it doesn't cry about `vite-env` or `.def.ts`
     },
+  ],
+  'unicorn/numeric-separators-style': [
+    2, // it's unnatural to use separators on the rhs of a demical point, and this rule doesn't allow that case to be disabled
+    { onlyIfContainsSeparator: true },
   ],
 
   // 🦄 rules that would be disruptive to change, but are probably worthwhile
   'unicorn/explicit-length-check': 0,
   'unicorn/filename-case': 0,
   'unicorn/no-nested-ternary': 0,
-  'unicorn/prefer-module': 0,
+  'unicorn/no-array-reduce': 0, // conflicts with eslint-plugin-fp
+  'unicorn/catch-error-name': 0, // I use `ex`, but alternatives are just as acceptable
+  'unicorn/no-array-callback-reference': 0, // great rule but you can't disable it for just Array#filter :(
+
+  // 🦄 rules that are counterproductive
+  'unicorn/prefer-module': 0, // sometimes we have no choice
+  'unicorn/prefer-top-level-await': 0, // as above, many environments still don't support this
+  'unicorn/no-process-exit': 0, // process.exit is perfectly valid
+  'unicorn/no-useless-undefined': 0, // conflicts with eslint's `consistent-return` rule
+  'unicorn/prefer-number-properties': 0, // much less readable
+  'unicorn/no-for-loop': 0, // TS-eslint's prefer-for-of is much better and respects cases where the index is used
 };

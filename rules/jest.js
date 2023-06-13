@@ -14,6 +14,7 @@ module.exports = {
   ],
   rules: {
     ...require('./commonRules'),
+    'import/no-extraneous-dependencies': 0, // in test files it's okay to require devDeps
     '@typescript-eslint/ban-ts-comment': [
       'warn', // ts-nocheck and ts-expect-error are okay in unit tests
       { 'ts-nocheck': false, 'ts-ignore': true, 'ts-expect-error': false },
