@@ -20,6 +20,8 @@ module.exports = {
       { 'ts-nocheck': false, 'ts-ignore': true, 'ts-expect-error': false },
     ],
 
+    'unicorn/consistent-function-scoping': 0, // mocking APIs requiring weird syntax
+
     // extra jest rules
     'jest/consistent-test-it': [2, { fn: 'it' }],
     'jest/no-duplicate-hooks': 2,

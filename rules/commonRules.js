@@ -146,4 +146,5 @@ module.exports = {
   'unicorn/no-useless-undefined': 0, // conflicts with eslint's `consistent-return` rule
   'unicorn/prefer-number-properties': 0, // much less readable
   'unicorn/no-for-loop': 0, // TS-eslint's prefer-for-of is much better and respects cases where the index is used
+  'unicorn/no-null': 0, // good rule but sometimes null is unavoidable
 };
