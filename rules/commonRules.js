@@ -109,7 +109,6 @@ module.exports = {
   '@typescript-eslint/no-unused-vars': [2, { caughtErrors: 'all' }],
 
   // 🦄 non-defaults
-  'unicorn/custom-error-definition': 2,
   'unicorn/no-object-as-default-parameter': 2,
 
   // 🦄 relax strict rules
