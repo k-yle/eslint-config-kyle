@@ -102,6 +102,11 @@ module.exports = {
   'no-unused-vars': 0,
   '@typescript-eslint/no-unused-vars': [2, { caughtErrors: 'all' }],
 
+  // disable some TS-eslint rules - i don't mind the inconsistency for these…
+  '@typescript-eslint/consistent-type-definitions': 0,
+  '@typescript-eslint/consistent-type-assertions': 0,
+  '@typescript-eslint/consistent-indexed-object-style': 0,
+
   // 🦄 non-defaults
   'unicorn/no-object-as-default-parameter': 2,
 
