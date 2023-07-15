@@ -92,12 +92,6 @@ module.exports = {
     },
   ],
 
-  '@typescript-eslint/no-duplicate-enum-values': 2,
-  '@typescript-eslint/prefer-ts-expect-error': 2,
-  '@typescript-eslint/prefer-optional-chain': 2,
-  '@typescript-eslint/prefer-for-of': 2,
-  '@typescript-eslint/unified-signatures': 2,
-
   // use TS variant of these rules
   'no-shadow': 0,
   '@typescript-eslint/no-shadow': 2,
@@ -146,4 +140,5 @@ module.exports = {
   'unicorn/prefer-number-properties': 0, // much less readable
   'unicorn/no-for-loop': 0, // TS-eslint's prefer-for-of is much better and respects cases where the index is used
   'unicorn/no-null': 0, // good rule but sometimes null is unavoidable
+  'unicorn/no-empty-file': 0, // heaps of false positives, it doesn't understand module.exports
 };
