@@ -41,7 +41,7 @@ module.exports = {
   'import/order': [
     'warn',
     {
-      groups: [['builtin', 'external', 'internal']],
+      groups: ['builtin', 'external', 'internal', 'parent', 'sibling'],
       pathGroups: [{ pattern: 'react', group: 'builtin', position: 'before' }],
       pathGroupsExcludedImportTypes: ['react'],
     },
