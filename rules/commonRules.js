@@ -20,6 +20,7 @@ module.exports = {
   // stricter than prettier
   curly: [2, 'multi-line'],
   'prefer-arrow-callback': 2,
+  quotes: 2, // to ban template literals with no arguments
 
   // for ts <reference /> comments
   'spaced-comment': [2, 'always', { markers: ['/'] }],
@@ -55,6 +56,13 @@ module.exports = {
         // eslint-disable-next-line unicorn/string-content
         "ImportDeclaration[source.value='react'][specifiers.0.type='ImportDefaultSpecifier']",
       message: 'only import required functions from React',
+    },
+    {
+      // DIY solution because unicorn/explicit-length-check doesn't allow !!x.length
+      selector:
+        'LogicalExpression:matches([left.property.name="length"], [right.property.name="length"])',
+      message:
+        'Using .length in a logical expression without !! may short-circut to 0',
     },
   ],
 
