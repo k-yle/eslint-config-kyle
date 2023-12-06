@@ -66,6 +66,9 @@ module.exports = {
     },
   ],
 
+  // sort the members of an import, but not the imports themselves
+  'sort-imports': ['error', { ignoreDeclarationSort: true }],
+
   // react
   'react/jsx-props-no-spreading': 0,
   'react/prop-types': 0,
@@ -110,6 +113,13 @@ module.exports = {
   'no-unused-vars': 0,
   '@typescript-eslint/no-unused-vars': [2, { caughtErrors: 'all' }],
 
+  // enable non-default TS rules
+  '@typescript-eslint/consistent-type-imports': [
+    2,
+    { fixStyle: 'inline-type-imports' },
+  ],
+  '@typescript-eslint/no-import-type-side-effects': 2,
+
   // disable some TS-eslint rules - i don't mind the inconsistency for these…
   '@typescript-eslint/consistent-type-definitions': 0,
   '@typescript-eslint/consistent-type-assertions': 0,
@@ -138,7 +148,7 @@ module.exports = {
   ],
 
   // 🦄 rules that would be disruptive to change, but are probably worthwhile
-  'unicorn/explicit-length-check': 0,
+  'unicorn/explicit-length-check': 0, // covered by no-restricted-syntax above
   'unicorn/filename-case': 0,
   'unicorn/no-nested-ternary': 0,
   'unicorn/no-array-reduce': 0, // conflicts with eslint-plugin-fp
