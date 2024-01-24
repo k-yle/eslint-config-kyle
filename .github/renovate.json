@@ -11,6 +11,10 @@
     "schedule": ["after 7am before 9am on friday"]
   },
   "packageRules": [
+    {
+      "matchPackageNames": ["eslint-formatter-pretty"],
+      "allowedVersions": "<6.0.0"
+    },
     { "bumpVersion": "patch", "updateTypes": ["patch"] },
     { "bumpVersion": "minor", "updateTypes": ["minor"] },
     { "bumpVersion": "major", "updateTypes": ["major"] }
