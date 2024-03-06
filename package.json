@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kyle",
-  "version": "19.4.1",
+  "version": "19.5.0",
   "author": "Kyle Hensel",
   "description": "A sharable eslint config that I use",
   "license": "MIT",
@@ -41,6 +41,6 @@
   "devDependencies": {
     "eslint": "^8.57.0",
     "jest": "^29.7.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   }
 }
