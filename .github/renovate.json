@@ -14,9 +14,6 @@
     {
       "matchPackageNames": ["eslint-formatter-pretty"],
       "allowedVersions": "<6.0.0"
-    },
-    { "bumpVersion": "patch", "updateTypes": ["patch"] },
-    { "bumpVersion": "minor", "updateTypes": ["minor"] },
-    { "bumpVersion": "major", "updateTypes": ["major"] }
+    }
   ]
 }
