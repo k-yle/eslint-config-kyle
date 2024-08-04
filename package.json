@@ -29,7 +29,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-formatter-pretty": "^5.0.0",
     "eslint-plugin-import": "npm:eslint-plugin-i@latest",
-    "eslint-plugin-jest": "^28.6.0",
+    "eslint-plugin-jest": "^28.7.0",
     "eslint-plugin-jest-formatting": "^3.1.0",
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "eslint-plugin-prettier": "^5.2.1",
