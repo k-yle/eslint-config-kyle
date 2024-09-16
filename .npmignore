@@ -1,4 +1,5 @@
 .github
-.eslintrc.json
-.prettierrc
+eslint.config.js
+.prettierrc.cjs
 README.md
+tsconfig.json

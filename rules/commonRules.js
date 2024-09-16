@@ -1,167 +1,173 @@
 // @ts-check
-/** @type {import("eslint").Linter.Config['rules']} */
-module.exports = {
-  // turn off crap
-  'no-console': 0,
-  'no-underscore-dangle': 0,
-  'no-plusplus': 0,
-  'no-await-in-loop': 0,
-  'guard-for-in': 0,
-  'import/prefer-default-export': 0,
-  'no-promise-executor-return': 0, // don't need this if we have TS. just results in more verbose code
+import confusingBrowserGlobals from 'confusing-browser-globals';
 
-  // i don't like these but they're good in principle
-  'no-bitwise': 0,
-  'no-nested-ternary': 0,
-  'no-continue': 0,
-  'no-else-return': 0,
-  'prefer-destructuring': 0,
-
-  // stricter than prettier
-  curly: [2, 'multi-line'],
-  'prefer-arrow-callback': 2,
-  quotes: 2, // to ban template literals with no arguments
-
-  // for ts <reference /> comments
-  'spaced-comment': [2, 'always', { markers: ['/'] }],
-
-  // our added rules
-  'prefer-reflect': [1, { exceptions: ['delete'] }],
-  'prefer-object-spread': 1,
-  'prefer-exponentiation-operator': 2,
-  'prefer-object-has-own': 2,
+/** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Rules} */
+export const commonRules = {
+  'block-scoped-var': 'error',
+  'class-methods-use-this': 'error',
+  'consistent-return': 'error',
+  curly: ['error', 'multi-line'],
+  'default-case': 'error',
+  'default-case-last': 'error',
+  'default-param-last': 'error',
+  'dot-notation': 'error',
+  eqeqeq: ['error', 'always'],
+  'func-names': 'warn',
+  'global-require': 'error',
+  'grouped-accessor-pairs': 'error',
+  'lines-between-class-members': [
+    'error',
+    'always',
+    { exceptAfterSingleLine: false },
+  ],
   'logical-assignment-operators': [
-    2,
+    'error',
     'always',
     { enforceForIfStatements: true },
   ],
+  'new-cap': ['error', { capIsNew: false }],
+  'new-parens': 'error',
 
-  'no-warning-comments': [1, { terms: ['fixme'], location: 'anywhere' }],
-
-  // make react the first import in the file
-  'import/order': [
-    'warn',
+  'no-alert': 'error',
+  'no-array-constructor': 'error',
+  'no-buffer-constructor': 'error',
+  'no-caller': 'error',
+  'no-constructor-return': 'error',
+  'no-debugger': 'error',
+  // disallow empty functions, except for standalone funcs/arrows
+  // https://eslint.org/docs/rules/no-empty-function
+  'no-empty-function': [
+    'error',
     {
-      groups: ['builtin', 'external', 'internal', 'parent', 'sibling'],
-      pathGroups: [{ pattern: 'react', group: 'builtin', position: 'before' }],
-      pathGroupsExcludedImportTypes: ['react'],
+      allow: ['arrowFunctions', 'functions', 'methods'],
     },
   ],
-  // ban `import React from "react"`, prefer `import { ... } from "react"`
-  // this override all the defaults that airbnb has banned
+  'no-eval': 'error',
+  'no-extend-native': 'error',
+  'no-extra-bind': 'error',
+  'no-extra-label': 'error',
+  'no-extra-semi': 'error',
+  'no-floating-decimal': 'error',
+  'no-implied-eval': 'error',
+  'no-inner-declarations': 'error',
+  'no-label-var': 'error',
+  'no-labels': ['error', { allowLoop: false, allowSwitch: false }],
+  'no-lone-blocks': 'error',
+  'no-loop-func': 'error',
+  'no-mixed-operators': [
+    'error',
+    {
+      groups: [
+        ['%', '**'],
+        ['+', '-'],
+        ['/', '*'],
+        ['&', '|', '^', '~', '<<', '>>', '>>>'],
+        ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
+        ['&&', '||', '??'],
+      ],
+    },
+  ],
+  'no-multi-assign': 'error',
+  'no-multi-str': 'error',
+  'no-new': 'error',
+  'no-new-func': 'error',
+  'no-new-wrappers': 'error',
+  'no-object-constructor': 'error',
+  'no-octal-escape': 'error',
+  'no-param-reassign': ['error', { props: false }],
+  'no-restricted-globals': [
+    'error',
+    {
+      message:
+        'Use Number.isFinite instead https://github.com/airbnb/javascript#standard-library--isfinite',
+      name: 'isFinite',
+    },
+    {
+      message:
+        'Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan',
+      name: 'isNaN',
+    },
+    ...confusingBrowserGlobals.map((g) => ({
+      message: `Use window.${g} instead. https://github.com/facebook/create-react-app/blob/HEAD/packages/confusing-browser-globals/README.md`,
+      name: g,
+    })),
+  ],
   'no-restricted-syntax': [
     'warn',
     {
-      selector:
-        // eslint-disable-next-line unicorn/string-content
-        "ImportDeclaration[source.value='react'][specifiers.0.type='ImportDefaultSpecifier']",
+      // ban `import React from "react"`, prefer `import { ... } from "react"`
       message: 'only import required functions from React',
+      selector:
+        "ImportDeclaration[source.value='react'][specifiers.0.type='ImportDefaultSpecifier']",
     },
     {
       // DIY solution because unicorn/explicit-length-check doesn't allow !!x.length
-      selector:
-        'LogicalExpression:matches([left.property.name="length"], [right.property.name="length"])',
       message:
         'Using .length in a logical expression without !! may short-circut to 0',
+      selector:
+        'LogicalExpression:matches([left.property.name="length"], [right.property.name="length"])',
     },
   ],
-
-  // sort the members of an import, but not the imports themselves
-  'sort-imports': ['error', { ignoreDeclarationSort: true }],
-
-  // react
-  'react/jsx-props-no-spreading': 0,
-  'react/prop-types': 0,
-  'react/react-in-jsx-scope': 0, // no longer needed as of react 16.14+
-  'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx'] }], // vite requires .jsx
-  'react/require-default-props': 0, // typescript handles this
-  'react/function-component-definition': [
-    1, // when using typescript we always want arrow-functions
-    { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
+  'no-return-assign': ['error', 'always'],
+  'no-return-await': 'error',
+  'no-script-url': 'error',
+  'no-self-compare': 'error',
+  'no-sequences': 'error',
+  'no-shadow-restricted-names': 'error',
+  'no-template-curly-in-string': 'error',
+  'no-throw-literal': 'error',
+  'no-undef': 'off', // handled by TS
+  'no-undef-init': 'error',
+  'no-unneeded-ternary': ['error', { defaultAssignment: false }],
+  'no-unreachable-loop': 'error',
+  'no-unsafe-optional-chaining': [
+    'error',
+    { disallowArithmeticOperators: true },
   ],
-  /* TODO: enable once PR released
-  'react/display-name': [1, { checkContextObjects: true }],
-  */
-  'react/jsx-curly-brace-presence': 2,
-  'react/no-invalid-html-attribute': 2,
-
-  'jsx-a11y/click-events-have-key-events': 0,
-
-  '@typescript-eslint/no-non-null-assertion': 0, // dumb rule
-  '@typescript-eslint/no-namespace': 0,
-
-  'import/extensions': [2, 'never'],
-  'import/no-unresolved': 0, // TODO: figure out how to make this work with TS
-
-  'import/no-extraneous-dependencies': [
-    2,
-    {
-      // in test files & config files, it's okay to import devDeps
-      devDependencies: ['**/*.test.*', '**/*.cy.*', '**/*.config.*'],
-      optionalDependencies: false,
-      peerDependencies: false,
-    },
+  'no-unused-expressions': 'error',
+  'no-useless-assignment': 'error',
+  'no-useless-computed-key': 'error',
+  'no-useless-concat': 'error',
+  'no-useless-constructor': 'error',
+  'no-useless-rename': 'error',
+  'no-useless-return': 'error',
+  'no-var': 'error',
+  'no-void': 'error',
+  'no-warning-comments': [
+    // FIX­ME comments should only fail the build in the CI
+    // environment, not while developing locally.
+    process.env.CI ? 'error' : 'warn',
+    { location: 'anywhere', terms: ['fixme'] },
   ],
-
-  // use TS variant of these rules
-  'no-shadow': 0,
-  '@typescript-eslint/no-shadow': 2,
-
-  'no-use-before-define': 0,
-  '@typescript-eslint/no-use-before-define': 2,
-
-  'no-unused-vars': 0,
-  '@typescript-eslint/no-unused-vars': [2, { caughtErrors: 'all' }],
-
-  // enable non-default TS rules
-  '@typescript-eslint/consistent-type-imports': [
-    2,
-    { fixStyle: 'inline-type-imports' },
+  'object-shorthand': ['error', 'always', { avoidQuotes: true }],
+  'one-var': ['error', 'never'],
+  'operator-assignment': ['error', 'always'],
+  'prefer-arrow-callback': 'error',
+  'prefer-const': [
+    'error',
+    { destructuring: 'all', ignoreReadBeforeAssign: true },
   ],
-  '@typescript-eslint/no-import-type-side-effects': 2,
-
-  // disable some TS-eslint rules - i don't mind the inconsistency for these…
-  '@typescript-eslint/consistent-type-definitions': 0,
-  '@typescript-eslint/consistent-type-assertions': 0,
-  '@typescript-eslint/consistent-indexed-object-style': 0,
-
-  // 🦄 non-defaults
-  'unicorn/no-object-as-default-parameter': 2,
-
-  // 🦄 relax strict rules
-  'unicorn/prevent-abbreviations': [
-    1,
-    {
-      replacements: {
-        temp: false, // well understood and never disambiguous. However, we do ban "tmp", as it's less readable and semantically equivilant to "temp"
-        env: false, // well understood and never disambiguous. The alternative is long and unwieldy
-        ref: false, // "ref" is different to "reference" in OSM, and is a well known term in react
-        str: false, // mappers/helpers that work on any arbitrary string should be allowed to use str
-        props: false, // "props" implies something different to "properties" in react. However, we do ban "prop" as it doesn't have a special meaning in the react world, unlike "props"
-      },
-      checkFilenames: false, // so that it doesn't cry about `vite-env` or `.def.ts`
-    },
+  'prefer-exponentiation-operator': 'error',
+  'prefer-numeric-literals': 'error',
+  'prefer-object-has-own': 'error',
+  'prefer-object-spread': 'error',
+  'prefer-promise-reject-errors': 'error',
+  'prefer-reflect': ['warn', { exceptions: ['delete'] }],
+  'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
+  'prefer-rest-params': 'error',
+  'prefer-spread': 'error',
+  'prefer-template': 'error',
+  'quote-props': ['error', 'as-needed'],
+  quotes: [
+    'error',
+    'single',
+    { allowTemplateLiterals: true, avoidEscape: true },
   ],
-  'unicorn/numeric-separators-style': [
-    2, // it's unnatural to use separators on the rhs of a demical point, and this rule doesn't allow that case to be disabled
-    { onlyIfContainsSeparator: true },
-  ],
-
-  // 🦄 rules that would be disruptive to change, but are probably worthwhile
-  'unicorn/explicit-length-check': 0, // covered by no-restricted-syntax above
-  'unicorn/filename-case': 0,
-  'unicorn/no-nested-ternary': 0,
-  'unicorn/no-array-reduce': 0, // conflicts with eslint-plugin-fp
-  'unicorn/catch-error-name': 0, // I use `ex`, but alternatives are just as acceptable
-  'unicorn/no-array-callback-reference': 0, // great rule but you can't disable it for just Array#filter :(
-
-  // 🦄 rules that are counterproductive
-  'unicorn/prefer-module': 0, // sometimes we have no choice
-  'unicorn/prefer-top-level-await': 0, // as above, many environments still don't support this
-  'unicorn/no-process-exit': 0, // process.exit is perfectly valid
-  'unicorn/no-useless-undefined': 0, // conflicts with eslint's `consistent-return` rule
-  'unicorn/prefer-number-properties': 0, // much less readable
-  'unicorn/no-for-loop': 0, // TS-eslint's prefer-for-of is much better and respects cases where the index is used
-  'unicorn/no-null': 0, // good rule but sometimes null is unavoidable
-  'unicorn/no-empty-file': 0, // heaps of false positives, it doesn't understand module.exports
+  radix: 'error',
+  'sort-imports': ['error', { ignoreDeclarationSort: true }], // sort the members of an import, but not the imports themselves
+  'spaced-comment': ['error', 'always', { markers: ['/'] }], // for ts <reference /> comments
+  'symbol-description': 'error',
+  'unicode-bom': ['error', 'never'],
+  'vars-on-top': 'error',
+  yoda: 'error',
 };
