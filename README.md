@@ -2,17 +2,41 @@
 
 [![Build Status](https://github.com/k-yle/eslint-config-kyle/workflows/build/badge.svg)](https://github.com/k-yle/eslint-config-kyle/actions)
 [![npm version](https://badge.fury.io/js/eslint-config-kyle.svg)](https://badge.fury.io/js/eslint-config-kyle)
-![code style](https://img.shields.io/badge/Code%20Style-Airbnb%20❤%20Prettier-pink.svg?style=flat)
 
 💚 The eslint config I use for all my side projects.
 
-## Usage
+A stricter version of the airbnb config with TS support.
+
+## Usage (Flat Config)
+
+Requires eslint ≥9 and node ≥18.18
 
 ```sh
-npm i -D eslint-config-kyle
+npm i -D eslint-config-kyle eslint
 ```
 
-Add the following to package.json:
+Add the following to `package.json`:
+
+```json
+{
+  "scripts": { "lint": "eslint ." },
+  "prettier": "eslint-config-kyle/prettier"
+}
+```
+
+And create a file called `eslint.config.js`:
+
+```js
+export { default } from 'eslint-config-kyle';
+```
+
+## Usage (Legacy)
+
+```sh
+npm i -D eslint-config-kyle@22 eslint@8
+```
+
+Add the following to `package.json`:
 
 ```json
 {

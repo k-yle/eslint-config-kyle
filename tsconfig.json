@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "checkJs": true,
+    "skipLibCheck": true,
+    "lib": ["esnext"],
+    "esModuleInterop": true,
+
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "types"
+  }
+}
