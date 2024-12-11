@@ -1,0 +1,10 @@
+/* eslint css/no-empty-blocks: error */
+
+#id {
+  /* eslint-disable-next-line css/no-invalid-properties */
+  invalid: 123
+}
+
+
+/* eslint-disable-next-line css/no-empty-blocks */
+.a {}

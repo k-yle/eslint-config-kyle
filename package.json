@@ -13,7 +13,7 @@
     "./prettier": "./prettier.json"
   },
   "scripts": {
-    "test": "eslint --ignore-pattern 'types/*' . && tsc",
+    "test": "eslint --ignore-pattern 'types/*' --report-unused-disable-directives-severity error . && tsc",
     "trypublish": "npm publish --provenance || true"
   },
   "keywords": [

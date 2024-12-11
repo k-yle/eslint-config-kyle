@@ -3,3 +3,4 @@ eslint.config.js
 .prettierrc.cjs
 README.md
 tsconfig.json
+tests
