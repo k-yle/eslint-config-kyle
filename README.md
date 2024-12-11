@@ -44,3 +44,26 @@ Add the following to `package.json`:
   "prettier": "eslint-config-kyle/prettier"
 }
 ```
+
+## VS Code configuration
+
+```jsonc
+{
+  // By default, VS Code will not show eslint errors
+  // for css files, so we need to add this snippet:
+  "eslint.validate": [
+    "css",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+  ],
+
+  // for the best DX, enable format-on-save and
+  // lint-on-save.
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+  },
+}
+```

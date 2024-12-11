@@ -1,6 +1,7 @@
 // @ts-check
 import { join } from 'node:path';
 import eslint from '@eslint/js';
+import css from '@eslint/css';
 import { includeIgnoreFile } from '@eslint/compat';
 import tsEslint from 'typescript-eslint';
 import unicorn from 'eslint-plugin-unicorn';
@@ -8,8 +9,7 @@ import prettier from 'eslint-plugin-prettier/recommended';
 import react from 'eslint-plugin-react';
 // @ts-expect-error -- no typedefs yet
 import reactHooks from 'eslint-plugin-react-hooks';
-import vitest from 'eslint-plugin-vitest';
-// @ts-expect-error -- no typedefs yet
+import vitest from '@vitest/eslint-plugin';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import-x';
 import globals from 'globals';
@@ -20,7 +20,8 @@ import { reactRules } from './rules/react.js';
 import { testRules } from './rules/test.js';
 import { tsRules } from './rules/ts.js';
 
-export default tsEslint.config(
+/** @type {import('typescript-eslint/dist/config-helper.js').ConfigWithExtends[]} */
+const jsConfigs = [
   includeIgnoreFile(join(process.cwd(), '.gitignore')),
   { ignores: ['**/*.snap'], name: 'eslint-config-kyle/ignore' },
   eslint.configs.recommended,
@@ -66,5 +67,24 @@ export default tsEslint.config(
       ...testRules.added,
       ...testRules.removed,
     },
+  },
+];
+
+export default tsEslint.config(
+  // we need to update all JS configs to only validate JS/TS files,
+  // because other languages don't necessarily have a compatible
+  // AST API...
+  ...jsConfigs.map((block) => ({
+    ...block,
+    files: block.files || ['**/*.*({c,m}){j,t}s*(x)'],
+  })),
+
+  // now we can add custom languages
+  {
+    files: ['**/*.css'],
+    language: 'css/css',
+    name: 'eslint-config-kyle/css',
+    // @ts-expect-error -- incorrect typedefs, see eslint/css#16
+    ...css.configs.recommended,
   },
 );
