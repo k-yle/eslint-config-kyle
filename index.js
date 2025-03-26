@@ -7,7 +7,6 @@ import tsEslint from 'typescript-eslint';
 import unicorn from 'eslint-plugin-unicorn';
 import prettier from 'eslint-plugin-prettier/recommended';
 import react from 'eslint-plugin-react';
-// @ts-expect-error -- no typedefs yet
 import reactHooks from 'eslint-plugin-react-hooks';
 import vitest from '@vitest/eslint-plugin';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
@@ -84,7 +83,6 @@ export default tsEslint.config(
     files: ['**/*.css'],
     language: 'css/css',
     name: 'eslint-config-kyle/css',
-    // @ts-expect-error -- incorrect typedefs, see eslint/css#16
     ...css.configs.recommended,
   },
 );
