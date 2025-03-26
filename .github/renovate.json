@@ -6,6 +6,7 @@
   "node": { "enabled": false },
   "ignoreDeps": ["node"],
   "groupName": "all",
+  "ignorePresets": ["group:monorepos"],
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["after 7am before 9am on friday"]
