@@ -5,6 +5,8 @@
     "skipLibCheck": true,
     "lib": ["esnext"],
     "esModuleInterop": true,
+    "downlevelIteration": true,
+    "module": "node16",
 
     "declaration": true,
     "emitDeclarationOnly": true,

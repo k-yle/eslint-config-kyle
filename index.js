@@ -1,6 +1,7 @@
 // @ts-check
 import { join } from 'node:path';
 import eslint from '@eslint/js';
+import json from '@eslint/json';
 import css from '@eslint/css';
 import { includeIgnoreFile } from '@eslint/compat';
 import tsEslint from 'typescript-eslint';
@@ -18,8 +19,9 @@ import { importRules } from './rules/import.js';
 import { reactRules } from './rules/react.js';
 import { testRules } from './rules/test.js';
 import { tsRules } from './rules/ts.js';
+import { localisedPunctuation } from './rules/custom/localised-punctuation.js';
 
-/** @type {import('typescript-eslint/dist/config-helper.js').ConfigWithExtends[]} */
+/** @type {import('typescript-eslint').ConfigWithExtends[]} */
 const jsConfigs = [
   includeIgnoreFile(join(process.cwd(), '.gitignore')),
   { ignores: ['**/*.snap'], name: 'eslint-config-kyle/ignore' },
@@ -84,5 +86,27 @@ export default tsEslint.config(
     language: 'css/css',
     name: 'eslint-config-kyle/css',
     ...css.configs.recommended,
+  },
+  {
+    files: ['**/*.json', '**/*.jsonc'],
+    ignores: ['package-lock.json'],
+    language: 'json/jsonc',
+    name: 'eslint-config-kyle/json',
+    ...json.configs.recommended,
+  },
+  {
+    files: ['**/locales/*.json'],
+    name: 'eslint-config-kyle/json-locale-files',
+    plugins: {
+      k: {
+        rules: {
+          'localised-punctuation': localisedPunctuation,
+        },
+      },
+    },
+    rules: {
+      'json/sort-keys': 'error',
+      'k/localised-punctuation': 'error',
+    },
   },
 );
