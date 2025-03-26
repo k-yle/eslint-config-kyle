@@ -5,6 +5,7 @@
   "timezone": "Pacific/Auckland",
   "node": { "enabled": false },
   "ignoreDeps": ["node"],
+  "groupName": "all",
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["after 7am before 9am on friday"]
