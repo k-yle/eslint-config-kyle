@@ -7,7 +7,7 @@ import { includeIgnoreFile } from '@eslint/compat';
 import tsEslint from 'typescript-eslint';
 import unicorn from 'eslint-plugin-unicorn';
 import prettier from 'eslint-plugin-prettier/recommended';
-import react from 'eslint-plugin-react';
+import react from '@eslint-react/eslint-plugin';
 import reactHooks from 'eslint-plugin-react-hooks';
 import vitest from '@vitest/eslint-plugin';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
@@ -32,7 +32,7 @@ const jsConfigs = [
   prettier,
   importPlugin.flatConfigs.recommended,
   jsxA11y.flatConfigs.recommended,
-  react.configs.flat?.recommended,
+  react.configs['recommended-typescript'],
   {
     languageOptions: {
       globals: globals.browser,
