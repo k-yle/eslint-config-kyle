@@ -20,6 +20,7 @@ import { reactRules } from './rules/react.js';
 import { testRules } from './rules/test.js';
 import { tsRules } from './rules/ts.js';
 import { localisedPunctuation } from './rules/custom/localised-punctuation.js';
+import { selfClosingComp } from './rules/custom/self-closing-comp.js';
 
 /** @type {import('typescript-eslint').ConfigWithExtends[]} */
 const jsConfigs = [
@@ -39,6 +40,11 @@ const jsConfigs = [
     },
     name: 'eslint-config-kyle/custom rules',
     plugins: {
+      k: {
+        rules: {
+          'self-closing-comp': selfClosingComp,
+        },
+      },
       'react-hooks': reactHooks,
     },
     rules: {

@@ -16,6 +16,8 @@ export const reactRules = {
     'jsx-a11y/anchor-ambiguous-text': 'error',
     'jsx-a11y/no-aria-hidden-on-focusable': 'error',
     'jsx-a11y/prefer-tag-over-role': 'error',
+
+    'k/self-closing-comp': 'error',
   },
   removed: {
     'jsx-a11y/click-events-have-key-events': 'off',
