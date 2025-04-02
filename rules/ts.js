@@ -11,6 +11,11 @@ export const tsRules = {
     '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-unused-vars': ['error', { caughtErrors: 'all' }],
     '@typescript-eslint/no-use-before-define': 'error',
+
+    '@typescript-eslint/prefer-literal-enum-member': [
+      'error', // enable allowBitwiseExpressions
+      { allowBitwiseExpressions: true },
+    ],
   },
   removed: {
     '@typescript-eslint/consistent-indexed-object-style': 'off', // too disruptive to enable

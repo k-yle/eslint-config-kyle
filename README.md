@@ -53,6 +53,7 @@ Add the following to `package.json`:
   // for css files, so we need to add this snippet:
   "eslint.validate": [
     "css",
+    "json",
     "javascript",
     "javascriptreact",
     "typescript",

@@ -24,17 +24,15 @@ import { localisedPunctuation } from './rules/custom/localised-punctuation.js';
 /** @type {import('typescript-eslint').ConfigWithExtends[]} */
 const jsConfigs = [
   includeIgnoreFile(join(process.cwd(), '.gitignore')),
-  { ignores: ['**/*.snap'], name: 'eslint-config-kyle/ignore' },
+  { ignores: ['**/*.snap', '**/.next'], name: 'eslint-config-kyle/ignore' },
   eslint.configs.recommended,
   ...tsEslint.configs.strict,
   ...tsEslint.configs.stylistic,
-  unicorn.configs['flat/recommended'],
+  unicorn.configs.recommended,
   prettier,
   importPlugin.flatConfigs.recommended,
   jsxA11y.flatConfigs.recommended,
-  /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Config} */ (
-    react.configs.flat?.recommended
-  ),
+  react.configs.flat?.recommended,
   {
     languageOptions: {
       globals: globals.browser,

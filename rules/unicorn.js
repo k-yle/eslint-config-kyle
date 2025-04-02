@@ -42,6 +42,7 @@ export const unicornRules = {
     'unicorn/no-process-exit': 'off', // process.exit is perfectly valid
     'unicorn/no-useless-undefined': 'off', // conflicts with eslint's `consistent-return` rule
     'unicorn/prefer-global-this': 'off', // many environments don't support globalThis yet
+    'unicorn/prefer-math-trunc': 'off', // i love this rule but it's inconvenient when you're genuinely using bitwise ops
     'unicorn/prefer-module': 'off', // sometimes we have no choice
     'unicorn/prefer-number-properties': 'off', // much less readable
     'unicorn/prefer-top-level-await': 'off', // as above, many environments still don't support this
