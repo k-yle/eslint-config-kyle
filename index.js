@@ -24,8 +24,6 @@ import { selfClosingComp } from './rules/custom/self-closing-comp.js';
 
 /** @type {import('typescript-eslint').ConfigWithExtends[]} */
 const jsConfigs = [
-  includeIgnoreFile(join(process.cwd(), '.gitignore')),
-  { ignores: ['**/*.snap', '**/.next'], name: 'eslint-config-kyle/ignore' },
   eslint.configs.recommended,
   ...tsEslint.configs.strict,
   ...tsEslint.configs.stylistic,
@@ -76,6 +74,12 @@ const jsConfigs = [
 ];
 
 export default tsEslint.config(
+  // ignore everything that is not version-controlled
+  includeIgnoreFile(join(process.cwd(), '.gitignore')),
+
+  // and ignore some files that _are_ version-controlled
+  { ignores: ['**/*.snap'], name: 'eslint-config-kyle/ignore' },
+
   // we need to update all JS configs to only validate JS/TS files,
   // because other languages don't necessarily have a compatible
   // AST API...

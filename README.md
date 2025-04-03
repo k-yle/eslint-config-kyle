@@ -66,5 +66,9 @@ Add the following to `package.json`:
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
   },
+
+  // optional, if the local vs global versions conflict.
+  // the exact syntax would depend on your package manager.
+  "prettier.prettierPath": "./node_modules/prettier",
 }
 ```
