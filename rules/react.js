@@ -17,6 +17,7 @@ export const reactRules = {
     'jsx-a11y/no-aria-hidden-on-focusable': 'error',
     'jsx-a11y/prefer-tag-over-role': 'error',
 
+    'k/no-redundant-jsx-curly-braces': 'error',
     'k/self-closing-comp': 'error',
   },
   removed: {

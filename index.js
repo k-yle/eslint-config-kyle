@@ -21,6 +21,7 @@ import { testRules } from './rules/test.js';
 import { tsRules } from './rules/ts.js';
 import { localisedPunctuation } from './rules/custom/localised-punctuation.js';
 import { selfClosingComp } from './rules/custom/self-closing-comp.js';
+import { noRedundantJsxCurlyBraces } from './rules/custom/no-redundant-jsx-curly-braces.js';
 
 /** @type {import('typescript-eslint').ConfigWithExtends[]} */
 const jsConfigs = [
@@ -40,6 +41,7 @@ const jsConfigs = [
     plugins: {
       k: {
         rules: {
+          'no-redundant-jsx-curly-braces': noRedundantJsxCurlyBraces,
           'self-closing-comp': selfClosingComp,
         },
       },
