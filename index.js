@@ -99,7 +99,7 @@ export default tsEslint.config(
   },
   {
     files: ['**/*.json', '**/*.jsonc'],
-    ignores: ['package-lock.json'],
+    ignores: ['**/package-lock.json'],
     language: 'json/jsonc',
     name: 'eslint-config-kyle/json',
     ...json.configs.recommended,
