@@ -8,7 +8,7 @@ export const importRules = {
     'import-x/newline-after-import': 'error',
     'import-x/no-absolute-path': 'error',
     'import-x/no-anonymous-default-export': 'error',
-    'import-x/no-cycle': ['error', { maxDepth: '∞' }],
+    // 'import-x/no-cycle': ['error', { maxDepth: '∞' }], // extremely slow (60x slower than the next worse rule)
     'import-x/no-dynamic-require': 'error',
     'import-x/no-empty-named-blocks': 'error',
     'import-x/no-extraneous-dependencies': [
