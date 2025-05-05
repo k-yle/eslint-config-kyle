@@ -18,6 +18,8 @@ export const unicornRules = {
           dev: false, // extremely common and never disambiguous
           env: false, // well understood and never disambiguous. The alternative is long and unwieldy
           envs: false, // as above
+          i: false, // in math-heavy code, short variables like i and j are arguably more readable than 'jindex'
+          j: false, // as above
           prop: false, // well understood and never disambiguous.
           props: false, // "props" implies something different to "properties" in react
           ref: false, // "ref" is different to "reference" in OSM, and is a well known term in react

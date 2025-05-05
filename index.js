@@ -73,6 +73,21 @@ const jsConfigs = [
       ...testRules.removed,
     },
   },
+  {
+    files: ['**/*.test-d.ts'],
+    name: 'eslint-config-kyle/type-test-files',
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 'off',
+      'no-unused-expressions': 'off',
+    },
+  },
+  {
+    files: ['**/config/**', '**/*.config.*'],
+    name: 'eslint-config-kyle/config-files',
+    rules: {
+      'import-x/no-anonymous-default-export': 'off',
+    },
+  },
 ];
 
 export default tsEslint.config(
