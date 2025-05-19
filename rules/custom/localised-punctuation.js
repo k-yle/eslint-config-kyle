@@ -1,3 +1,6 @@
+// eslint-disable-next-line unicorn/no-unnecessary-polyfills
+import escapeRegExp from 'regexp.escape';
+
 /**
  * If the key starts and ends with a slash, then it is treated as a regex.
  * If the value contains multiple characters, they are all suggested as possible alternatives,
@@ -31,7 +34,7 @@ const PUCTUATION = {
       ')': '）',
       ',': '、，',
       '-': '–⸺～',
-      '/[^\\d](\\.)[^\\d]/': '。',
+      '/(?:[^\\d])(\\.)(?:[^\\d])/': '。',
       ':': '：',
       ';': '；',
       '?': '？',
@@ -134,70 +137,48 @@ export const localisedPunctuation = {
               const canAutoFix = r.length === 1;
               const replacements = [...r].join(' or ');
 
-              if (isRegExp(search)) {
-                // it's a regex
-                const re = new RegExp(search.slice(1, -1), 'g');
-                for (const match of stringValue.matchAll(re)) {
-                  context.report({
-                    data: { language, replacements, search },
-                    fix: canAutoFix
-                      ? createFixer(node, match[1], r[0])
-                      : undefined,
-                    loc: {
-                      end: {
-                        column:
-                          node.loc.start.column +
-                          match.index +
-                          search.length -
-                          2,
-                        line: node.loc.end.line,
-                      },
-                      start: {
-                        column: node.loc.start.column + match.index,
-                        line: node.loc.start.line,
-                      },
+              const re = isRegExp(search)
+                ? new RegExp(search.slice(1, -1), 'g')
+                : new RegExp(
+                    `(?:[\\w\\s])(${escapeRegExp(search)})(?:[\\w\\s])`,
+                    'g',
+                  );
+
+              for (const match of stringValue.matchAll(re)) {
+                context.report({
+                  data: {
+                    language,
+                    replacements,
+                    search: isRegExp(search) ? match[1] : search,
+                  },
+                  fix: canAutoFix
+                    ? createFixer(node, match[1], r[0])
+                    : undefined,
+                  loc: {
+                    end: {
+                      column:
+                        node.loc.start.column +
+                        match.index +
+                        (isRegExp(search)
+                          ? search.length - 2
+                          : search.length - 1),
+                      line: node.loc.end.line,
                     },
-                    messageId: 'error',
-                    node,
-                    suggest: canAutoFix
-                      ? []
-                      : [...r].map((replacement) => ({
-                          data: { replacement },
-                          fix: createFixer(node, match[1], replacement),
-                          messageId: 'suggestion',
-                        })),
-                  });
-                }
-              } else {
-                // it's a normal string
-                for (const match of indexOfAll(stringValue, search)) {
-                  context.report({
-                    data: { language, replacements, search },
-                    fix: canAutoFix
-                      ? createFixer(node, search, r[0])
-                      : undefined,
-                    loc: {
-                      end: {
-                        column:
-                          node.loc.start.column + match + search.length + 1,
-                        line: node.loc.end.line,
-                      },
-                      start: {
-                        column: node.loc.start.column + match + 1,
-                        line: node.loc.start.line,
-                      },
+                    start: {
+                      column: node.loc.start.column + match.index,
+                      line: node.loc.start.line,
                     },
-                    messageId: 'error',
-                    node,
-                    suggest: canAutoFix
-                      ? []
-                      : [...r].map((replacement) => ({
-                          data: { replacement },
-                          fix: createFixer(node, search, replacement),
-                          messageId: 'suggestion',
-                        })),
-                  });
-                }
+                  },
+                  messageId: 'error',
+                  node,
+                  suggest: canAutoFix
+                    ? []
+                    : [...r].map((replacement) => ({
+                        data: { replacement },
+                        fix: createFixer(node, match[1], replacement),
+                        messageId: 'suggestion',
+                      })),
+                });
               }
             }
 

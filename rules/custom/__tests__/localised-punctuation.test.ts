@@ -55,7 +55,7 @@ ruleTester.run('localised-punctuation', <never>localisedPunctuation, {
           data: {
             language: 'Chinese',
             replacements: '。',
-            search: String.raw`/[^\d](\.)[^\d]/`,
+            search: '.',
           },
           messageId: 'error',
         },
@@ -78,5 +78,9 @@ ruleTester.run('localised-punctuation', <never>localisedPunctuation, {
     { code: JSON.stringify({ a: '1.23' }), filename: 'locales/zh.json' },
     { code: JSON.stringify({ 'a.b': '1.2' }), filename: 'locales/zh.json' },
     { code: JSON.stringify({ a: '（' }), filename: 'locales/zh.json' },
+    {
+      code: JSON.stringify({ a: '({code})例子(markdown)[markdown]' }),
+      filename: 'locales/zh.json',
+    },
   ],
 });

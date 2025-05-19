@@ -9,7 +9,13 @@ export const tsRules = {
     ],
     '@typescript-eslint/no-import-type-side-effects': 'error',
     '@typescript-eslint/no-shadow': 'error',
-    '@typescript-eslint/no-unused-vars': ['error', { caughtErrors: 'all' }],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        caughtErrors: 'all', // enforce `} catch {` with no argument
+        varsIgnorePattern: '^_', // allow `_` prefixed variables for Explicit Resource Management
+      },
+    ],
     '@typescript-eslint/no-use-before-define': 'error',
 
     '@typescript-eslint/prefer-literal-enum-member': [
