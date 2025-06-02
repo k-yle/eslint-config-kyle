@@ -4,6 +4,7 @@
     "rootDir": null,
     "module": "node16",
     "emitDeclarationOnly": true,
+    "noEmit": false,
     "outDir": "types"
   },
   "exclude": ["tests", "types"]
