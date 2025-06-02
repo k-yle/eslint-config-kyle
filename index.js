@@ -131,7 +131,7 @@ export default tsEslint.config(
     },
     rules: {
       'json/sort-keys': 'error',
-      'k/localised-punctuation': 'error',
+      'k/localised-punctuation': 'warn',
     },
   },
 );

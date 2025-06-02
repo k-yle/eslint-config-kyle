@@ -1,6 +1,9 @@
 // @ts-check
 import confusingBrowserGlobals from 'confusing-browser-globals';
 
+// eslint-disable-next-line dot-notation
+const isCI = process.env['CI'] || process.env['CI_REPO_NAME'];
+
 /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Rules} */
 export const commonRules = {
   'block-scoped-var': 'error',
@@ -136,7 +139,7 @@ export const commonRules = {
   'no-warning-comments': [
     // FIX­ME comments should only fail the build in the CI
     // environment, not while developing locally.
-    process.env.CI ? 'error' : 'warn',
+    isCI ? 'error' : 'warn',
     { location: 'anywhere', terms: ['fixme'] },
   ],
   'object-shorthand': ['error', 'always', { avoidQuotes: true }],

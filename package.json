@@ -10,6 +10,7 @@
       "types": "./types/index.d.ts",
       "default": "./index.js"
     },
+    "./tsconfig": "./tsconfig.base.json",
     "./prettier": "./prettier.json"
   },
   "scripts": {

@@ -108,7 +108,7 @@ const isRegExp = (search) =>
 export const localisedPunctuation = {
   create(context) {
     const fileLang =
-      context.filename.split(/[\\/]/).pop()?.split('.')[0].split('-')[0] || '';
+      context.filename.split(/[\\/]/).pop()?.split('.')[0]?.split('-')[0] || '';
 
     // try to use the formatted language name if available
     let language = fileLang;
@@ -145,14 +145,16 @@ export const localisedPunctuation = {
                   );
 
               for (const match of stringValue.matchAll(re)) {
+                const source = r[0] || '';
+                const target = match[1] || '';
                 context.report({
                   data: {
                     language,
                     replacements,
-                    search: isRegExp(search) ? match[1] : search,
+                    search: isRegExp(search) ? target : search,
                   },
                   fix: canAutoFix
-                    ? createFixer(node, match[1], r[0])
+                    ? createFixer(node, target, source)
                     : undefined,
                   loc: {
                     end: {
@@ -175,7 +177,7 @@ export const localisedPunctuation = {
                     ? []
                     : [...r].map((replacement) => ({
                         data: { replacement },
-                        fix: createFixer(node, match[1], replacement),
+                        fix: createFixer(node, target, replacement),
                         messageId: 'suggestion',
                       })),
                 });

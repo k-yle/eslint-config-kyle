@@ -23,7 +23,7 @@ export const importRules = {
           '**/scripts/**',
         ],
         optionalDependencies: false,
-        peerDependencies: false,
+        peerDependencies: true, // allow peerDeps to be imported
       },
     ],
     'import-x/no-mutable-exports': 'error',

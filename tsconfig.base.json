@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    /* uncontroversial defaults */
+    "esModuleInterop": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "downlevelIteration": true,
+    "jsx": "react-jsxdev",
+
+    /* modern defaults */
+    "isolatedModules": true,
+    // "verbatimModuleSyntax": true, // TODO: enable. for some reason it fails for this repo
+    "types": [], // no automatic type elision
+    "composite": true,
+    "exactOptionalPropertyTypes": false, // too disruptive, and usually unhelpful
+    "erasableSyntaxOnly": false, // one day when enums are part of native JS, this could be enabled
+
+    /* strictness */
+    "strict": true,
+    "checkJs": true,
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* ESM */
+    "lib": ["esnext"], // explicitly add DOM if you need it
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+
+    /* emit */
+    "noEmit": true, // off by default; these settings apply if emit is enabled
+    "rootDir": "${configDir}/src",
+    "outDir": "${configDir}/dist",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "stripInternal": true
+  },
+  "exclude": ["**/node_modules", "**/coverage"]
+}

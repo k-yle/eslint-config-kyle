@@ -7,7 +7,17 @@ export const testRules = {
     'vitest/no-duplicate-hooks': 'error',
     'vitest/no-focused-tests': 1,
     'vitest/no-standalone-expect': 'error',
-    'vitest/padding-around-all': 'error',
+
+    // 'padding-around-all' includes 'padding-around-expect-groups',
+    // which we don't want because that one is counterproductive. The
+    // rest are good, but we need to explicitly list them all:
+    'vitest/padding-around-after-all-blocks': 'error',
+    'vitest/padding-around-after-each-blocks': 'error',
+    'vitest/padding-around-before-all-blocks': 'error',
+    'vitest/padding-around-before-each-blocks': 'error',
+    'vitest/padding-around-describe-blocks': 'error',
+    'vitest/padding-around-test-blocks': 'error',
+
     'vitest/prefer-called-with': 'error', // more explicit tests are better, can still use expect.any
     'vitest/prefer-comparison-matcher': 'error',
     // 'vitest/prefer-describe-function-title': 'error', // TODO: (semver breaking) enable
@@ -34,6 +44,5 @@ export const testRules = {
       { 'ts-expect-error': false, 'ts-ignore': true, 'ts-nocheck': false },
     ],
     'unicorn/consistent-function-scoping': 'off', // mocking APIs requiring weird syntax
-    'vitest/padding-around-expect-groups': 'off', // counterproductive; the other padding rules are good
   },
 };

@@ -1,14 +1,8 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "strict": true,
-    "checkJs": true,
-    "skipLibCheck": true,
-    "lib": ["esnext"],
-    "esModuleInterop": true,
-    "downlevelIteration": true,
+    "rootDir": null,
     "module": "node16",
-
-    "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "types"
   },

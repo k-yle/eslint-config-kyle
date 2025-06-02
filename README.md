@@ -30,6 +30,14 @@ And create a file called `eslint.config.js`:
 export { default } from 'eslint-config-kyle';
 ```
 
+And add this to your `tsconfig.json` file:
+
+```jsonc
+{
+  "extends": "eslint-config-kyle/tsconfig",
+}
+```
+
 ## Usage (Legacy)
 
 ```sh
