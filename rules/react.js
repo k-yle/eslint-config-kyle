@@ -9,6 +9,7 @@ export const reactRules = {
     '@eslint-react/no-children-prop': 'error',
     '@eslint-react/no-missing-component-display-name': 'error',
     '@eslint-react/no-missing-context-display-name': 'error',
+    '@eslint-react/no-misused-capture-owner-stack': 'error',
     '@eslint-react/no-useless-fragment': 'error',
     '@eslint-react/prefer-shorthand-boolean': 'error',
     '@eslint-react/prefer-shorthand-fragment': 'error',

@@ -8,6 +8,7 @@
     "resolveJsonModule": true,
     "downlevelIteration": true,
     "jsx": "react-jsxdev",
+    "forceConsistentCasingInFileNames": true,
 
     /* modern defaults */
     "isolatedModules": true,
@@ -16,6 +17,8 @@
     "composite": true,
     "exactOptionalPropertyTypes": false, // too disruptive, and usually unhelpful
     "erasableSyntaxOnly": false, // one day when enums are part of native JS, this could be enabled
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force", // no need for dud `export {}` anymore
 
     /* strictness */
     "strict": true,

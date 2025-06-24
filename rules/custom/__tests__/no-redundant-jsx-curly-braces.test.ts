@@ -23,6 +23,26 @@ ruleTester.run(
         errors: [{ messageId: 'error' }],
         output: "<Component a='b' />",
       },
+      {
+        code: '<Component>{}</Component>',
+        errors: [{ messageId: 'error' }],
+        output: '<Component></Component>',
+      },
+      {
+        code: '<Component>a{}</Component>',
+        errors: [{ messageId: 'error' }],
+        output: '<Component>a</Component>',
+      },
+      {
+        code: '<Component> a {} b {} </Component>',
+        errors: [{ messageId: 'error' }, { messageId: 'error' }],
+        output: '<Component> a  b  </Component>',
+      },
+      {
+        code: '<>{}</>',
+        errors: [{ messageId: 'error' }],
+        output: '<></>',
+      },
     ],
     valid: [
       '<Component />',
@@ -32,6 +52,10 @@ ruleTester.run(
       '<Component a={`${1}`} />',
       '<Component a={`b`} />',
       "<Component a={'b' + 'c'} />",
+      '<Component>{undefined}</Component>',
+      "<Component>{''}</Component>",
+      '<Component>{0}</Component>',
+      '<Component>{/** comment */}</Component>',
     ],
   },
 );

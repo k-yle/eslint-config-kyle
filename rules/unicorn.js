@@ -9,6 +9,7 @@ export const unicornRules = {
       { onlyIfContainsSeparator: true }, // it's unnatural to use separators on the rhs of a demical point, and this rule doesn't allow that case to be disabled
     ],
     'unicorn/prefer-import-meta-properties': 'error',
+    'unicorn/prefer-ternary': ['error', 'only-single-line'], // multiline cases can be more readable as if statements
     'unicorn/prevent-abbreviations': [
       'warn',
       {
@@ -38,6 +39,7 @@ export const unicornRules = {
     'unicorn/import-style': 'off', // this rule special-cases node:path, which is weird and not really helpful
     'unicorn/no-array-callback-reference': 'off', // great rule but you can't disable it for just Array#filter :(
     'unicorn/no-array-reduce': 'off', // conflicts with eslint-plugin-fp
+    'unicorn/no-await-expression-member': 'off', // unhelpful rule, it's just as readable as any other method expression
     'unicorn/no-empty-file': 'off', // heaps of false positives, it doesn't understand module.exports
     'unicorn/no-for-loop': 'off', // TS-eslint's prefer-for-of is much better and respects cases where the index is used
     'unicorn/no-nested-ternary': 'off', // too disruptive to enable

@@ -164,7 +164,7 @@ export const commonRules = {
   quotes: [
     'error',
     'single',
-    { allowTemplateLiterals: true, avoidEscape: true },
+    { allowTemplateLiterals: false, avoidEscape: true }, // ban untagged template literals with no expressions
   ],
   radix: 'error',
   'sort-imports': ['error', { ignoreDeclarationSort: true }], // sort the members of an import, but not the imports themselves
