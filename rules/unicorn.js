@@ -8,6 +8,7 @@ export const unicornRules = {
       'error',
       { onlyIfContainsSeparator: true }, // it's unnatural to use separators on the rhs of a demical point, and this rule doesn't allow that case to be disabled
     ],
+    'unicorn/prefer-import-meta-properties': 'error',
     'unicorn/prevent-abbreviations': [
       'warn',
       {
