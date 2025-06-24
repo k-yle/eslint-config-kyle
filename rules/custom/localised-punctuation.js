@@ -102,7 +102,10 @@ const isRegExp = (search) =>
   search.startsWith('/') && search.endsWith('/') && search.length > 1;
 
 /**
- * @typedef {import('@eslint/json/types').JSONRuleDefinition<[], 'error' | 'suggestion' | 'unexpected'>} Rule
+ * @typedef {import('@eslint/json/types').JSONRuleDefinition<{
+ *  MessageIds: 'error' | 'suggestion' | 'unexpected';
+ *  RuleOptions: [];
+ * }>} Rule
  * @type {Rule}
  */
 export const localisedPunctuation = {

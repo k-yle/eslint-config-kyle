@@ -11,7 +11,7 @@ import react from '@eslint-react/eslint-plugin';
 import reactHooks from 'eslint-plugin-react-hooks';
 import vitest from '@vitest/eslint-plugin';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
-import importPlugin from 'eslint-plugin-import-x';
+import { flatConfigs as importPlugin } from 'eslint-plugin-import-x';
 import globals from 'globals';
 import { commonRules } from './rules/commonRules.js';
 import { unicornRules } from './rules/unicorn.js';
@@ -30,7 +30,7 @@ const jsConfigs = [
   ...tsEslint.configs.stylistic,
   unicorn.configs.recommended,
   prettier,
-  importPlugin.flatConfigs.recommended,
+  importPlugin.recommended,
   jsxA11y.flatConfigs.recommended,
   react.configs['recommended-typescript'],
   {
