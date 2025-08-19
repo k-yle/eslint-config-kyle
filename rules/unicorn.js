@@ -45,6 +45,7 @@ export const unicornRules = {
     'unicorn/no-nested-ternary': 'off', // too disruptive to enable
     'unicorn/no-null': 'off', // good rule but sometimes null is unavoidable
     'unicorn/no-process-exit': 'off', // process.exit is perfectly valid
+    'unicorn/no-unnecessary-polyfills': 'off', // good rule, but it's too expensive. takes up 19% of lint time
     'unicorn/no-useless-undefined': 'off', // conflicts with eslint's `consistent-return` rule
     'unicorn/prefer-global-this': 'off', // many environments don't support globalThis yet
     'unicorn/prefer-math-trunc': 'off', // i love this rule but it's inconvenient when you're genuinely using bitwise ops

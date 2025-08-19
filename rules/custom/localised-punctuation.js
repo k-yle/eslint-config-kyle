@@ -1,4 +1,3 @@
-// eslint-disable-next-line unicorn/no-unnecessary-polyfills
 import escapeRegExp from 'regexp.escape';
 
 /**

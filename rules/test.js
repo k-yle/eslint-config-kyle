@@ -39,6 +39,7 @@ export const testRules = {
     'vitest/require-top-level-describe': 'error',
   },
   removed: {
+    '@eslint-react/no-create-ref': 'off', // allowed in unit tests which are not hooks
     '@typescript-eslint/ban-ts-comment': [
       'warn', // ts-nocheck and ts-expect-error are okay in unit tests
       { 'ts-expect-error': false, 'ts-ignore': true, 'ts-nocheck': false },

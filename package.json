@@ -11,6 +11,7 @@
       "default": "./index.js"
     },
     "./tsconfig": "./tsconfig.base.json",
+    "./tsconfig.base.json": "./tsconfig.base.json",
     "./prettier": "./prettier.json"
   },
   "scripts": {
