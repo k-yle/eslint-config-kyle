@@ -1,6 +1,4 @@
-// @ts-check
-
-/** @type {Record<'added' | 'removed', import('@typescript-eslint/utils').TSESLint.FlatConfig.Rules>} */
+/** @type {Record<'added' | 'removed', import('@eslint/config-helpers').Config['rules']>} */
 export const importRules = {
   added: {
     'import-x/dynamic-import-chunkname': 'off', // TODO: broken rule, enable once fixed

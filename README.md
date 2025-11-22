@@ -9,7 +9,7 @@ A stricter version of the airbnb config with TS support.
 
 ## Usage (Flat Config)
 
-Requires eslint ≥9 and node ≥18.18
+Requires eslint ≥9.22 and node ≥20
 
 ```sh
 npm i -D eslint-config-kyle eslint
@@ -34,7 +34,7 @@ And add this to your `tsconfig.json` file:
 
 ```jsonc
 {
-  "extends": "eslint-config-kyle/tsconfig",
+  "extends": "eslint-config-kyle/tsconfig.base.json",
 }
 ```
 

@@ -1,8 +1,8 @@
-// @ts-check
 import { join } from 'node:path';
 import eslint from '@eslint/js';
 import json from '@eslint/json';
 import css from '@eslint/css';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import { includeIgnoreFile } from '@eslint/compat';
 import tsEslint from 'typescript-eslint';
 import unicorn from 'eslint-plugin-unicorn';
@@ -23,7 +23,7 @@ import { localisedPunctuation } from './rules/custom/localised-punctuation.js';
 import { selfClosingComp } from './rules/custom/self-closing-comp.js';
 import { noRedundantJsxCurlyBraces } from './rules/custom/no-redundant-jsx-curly-braces.js';
 
-/** @type {import('typescript-eslint').ConfigWithExtends[]} */
+/** @type {import('@eslint/config-helpers').ConfigWithExtends[]} */
 const jsConfigs = [
   eslint.configs.recommended,
   ...tsEslint.configs.strict,
@@ -48,7 +48,6 @@ const jsConfigs = [
       'react-hooks': reactHooks,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
       ...commonRules,
       ...reactRules.added,
       ...reactRules.removed,
@@ -90,12 +89,12 @@ const jsConfigs = [
   },
 ];
 
-export default tsEslint.config(
+export default defineConfig(
   // ignore everything that is not version-controlled
   includeIgnoreFile(join(process.cwd(), '.gitignore')),
 
   // and ignore some files that _are_ version-controlled
-  { ignores: ['**/*.snap'], name: 'eslint-config-kyle/ignore' },
+  globalIgnores(['**/*.snap'], 'eslint-config-kyle/ignore'),
 
   // we need to update all JS configs to only validate JS/TS files,
   // because other languages don't necessarily have a compatible

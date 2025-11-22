@@ -1,10 +1,9 @@
-// @ts-check
 import confusingBrowserGlobals from 'confusing-browser-globals';
 
 // eslint-disable-next-line dot-notation
 const isCI = process.env['CI'] || process.env['CI_REPO_NAME'];
 
-/** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Rules} */
+/** @type {import('@eslint/config-helpers').Config['rules']} */
 export const commonRules = {
   'block-scoped-var': 'error',
   'class-methods-use-this': 'error',
@@ -90,8 +89,12 @@ export const commonRules = {
         'Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan',
       name: 'isNaN',
     },
-    ...confusingBrowserGlobals.map((g) => ({
-      message: `Use window.${g} instead. https://github.com/facebook/create-react-app/blob/HEAD/packages/confusing-browser-globals/README.md`,
+    ...[
+      ...confusingBrowserGlobals,
+      'reportError', // because it's a commonly used in business-side code
+      'Text', // common name, extremely rare that you want the global
+    ].map((g) => ({
+      message: `Use window.${g} instead. https://npm.im/confusing-browser-globals`,
       name: g,
     })),
   ],
@@ -99,7 +102,8 @@ export const commonRules = {
     'warn',
     {
       // ban `import React from "react"`, prefer `import { ... } from "react"`
-      message: 'only import required functions from React',
+      message:
+        'Do not use a default-import with React. Only import required functions.',
       selector:
         "ImportDeclaration[source.value='react'][specifiers.0.type='ImportDefaultSpecifier']",
     },
@@ -160,6 +164,7 @@ export const commonRules = {
   'prefer-rest-params': 'error',
   'prefer-spread': 'error',
   'prefer-template': 'error',
+  'preserve-caught-error': 'error',
   'quote-props': ['error', 'as-needed'],
   quotes: [
     'error',

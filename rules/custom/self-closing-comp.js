@@ -3,7 +3,7 @@
 // because we don't need an entire plugin just for a rule that's
 // trivial to implement ourselves.
 
-/** @type {import('@typescript-eslint/utils').TSESLint.RuleModule<'notSelfClosing'>} */
+/** @type {import('@eslint/core').RuleDefinition} */
 export const selfClosingComp = {
   create(context) {
     return {
@@ -37,7 +37,6 @@ export const selfClosingComp = {
       },
     };
   },
-  defaultOptions: [],
   meta: {
     docs: {
       description:

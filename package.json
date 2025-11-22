@@ -10,7 +10,6 @@
       "types": "./types/index.d.ts",
       "default": "./index.js"
     },
-    "./tsconfig": "./tsconfig.base.json",
     "./tsconfig.base.json": "./tsconfig.base.json",
     "./prettier": "./prettier.json"
   },
@@ -31,34 +30,38 @@
     "url": "https://github.com/k-yle/eslint-config-kyle/issues"
   },
   "engines": {
-    "node": ">=18.18"
+    "node": ">=20"
   },
   "dependencies": {
-    "@eslint-react/eslint-plugin": "^1.52.2",
-    "@eslint/compat": "^1.3.0",
-    "@eslint/css": "^0.9.0",
-    "@eslint/js": "^9.29.0",
-    "@eslint/json": "^0.12.0",
-    "@vitest/eslint-plugin": "^1.2.7",
+    "@eslint-react/eslint-plugin": "^2.0.6",
+    "@eslint/compat": "^1.4.0",
+    "@eslint/css": "^0.12.0",
+    "@eslint/js": "^9.37.0",
+    "@eslint/json": "^0.13.2",
+    "@vitest/eslint-plugin": "^1.4.3",
     "confusing-browser-globals": "^1.0.11",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-import-x": "^4.15.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import-x": "^4.16.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-prettier": "^5.5.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-unicorn": "^59.0.1",
-    "globals": "^16.2.0",
-    "prettier": "^3.6.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react-hooks": "^6.1.1",
+    "eslint-plugin-unicorn": "^61.0.2",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2",
     "regexp.escape": "^2.0.1",
-    "typescript-eslint": "^8.35.0"
+    "typescript-eslint": "^8.46.0"
   },
   "devDependencies": {
     "@types/confusing-browser-globals": "^1.0.3",
-    "@types/eslint-plugin-jsx-a11y": "^6.10.0",
-    "@types/node": "^22.15.32",
+    "@types/eslint-plugin-jsx-a11y": "^6.10.1",
+    "@types/node": "^22.18.8",
+    "@types/react": "^19.2.2",
     "@types/regexp.escape": "^2.0.0",
-    "eslint": "^9.29.0",
-    "typescript": "^5.8.3",
+    "eslint": "^9.37.0",
+    "typescript": "^5.9.3",
     "vitest": "^3.2.4"
+  },
+  "peerDependencies": {
+    "eslint": "^9.22.0"
   }
 }

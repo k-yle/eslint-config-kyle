@@ -10,7 +10,7 @@ export const A = () => {
       {/* eslint-disable-next-line k/self-closing-comp */}
       <div></div>
       {/* eslint-disable-next-line k/no-redundant-jsx-curly-braces */}
-      <main a={'b'} />
+      <main title={'b'} />
     </>
   );
 };

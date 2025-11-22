@@ -1,6 +1,4 @@
-// @ts-check
-
-/** @type {Record<'added' | 'removed', import('@typescript-eslint/utils').TSESLint.FlatConfig.Rules>} */
+/** @type {Record<'added' | 'removed', import('@eslint/config-helpers').Config['rules']>} */
 export const testRules = {
   added: {
     'vitest/consistent-test-it': ['error', { fn: 'it' }],
@@ -20,8 +18,7 @@ export const testRules = {
 
     'vitest/prefer-called-with': 'error', // more explicit tests are better, can still use expect.any
     'vitest/prefer-comparison-matcher': 'error',
-    // 'vitest/prefer-describe-function-title': 'error', // TODO: (semver breaking) enable
-    // 'vitest/prefer-snapshot-hint': 'error', // TODO: (semver breaking) enable
+    'vitest/prefer-describe-function-title': 'error',
     'vitest/prefer-each': 'error',
     'vitest/prefer-equality-matcher': 'error',
     'vitest/prefer-hooks-in-order': 'error',
@@ -34,9 +31,9 @@ export const testRules = {
     'vitest/prefer-to-have-length': 'error',
     'vitest/prefer-todo': 'error',
     'vitest/prefer-vi-mocked': 'error',
-    'vitest/require-mock-type-parameters': 'error',
     'vitest/require-to-throw-message': 'error',
     'vitest/require-top-level-describe': 'error',
+    'vitest/valid-title': ['error', { allowArguments: true }], // need allowArguments to avoid conflicting with `vitest/prefer-describe-function-title`
   },
   removed: {
     '@eslint-react/no-create-ref': 'off', // allowed in unit tests which are not hooks

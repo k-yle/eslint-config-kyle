@@ -5,7 +5,7 @@
 // this rule also catches empty curly braces in JSX children, such as <div>{}</div>,
 // which is pointless, but I can't find an eslint which catches this.
 
-/** @type {import('@typescript-eslint/utils').TSESLint.RuleModule<'error'>} */
+/** @type {import('@eslint/core').RuleDefinition} */
 export const noRedundantJsxCurlyBraces = {
   create(context) {
     return {
@@ -37,7 +37,6 @@ export const noRedundantJsxCurlyBraces = {
       },
     };
   },
-  defaultOptions: [],
   meta: {
     docs: {
       description:

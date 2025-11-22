@@ -1,4 +1,5 @@
 import escapeRegExp from 'regexp.escape';
+// TODO: remove dependency once we drop support for node23
 
 /**
  * If the key starts and ends with a slash, then it is treated as a regex.
@@ -24,7 +25,8 @@ const PUCTUATION = {
     replacements: { '"': '«»‹›', "'": '’' },
   },
   'ja,ko,zh': {
-    reference: '',
+    reference:
+      'https://en.wikipedia.org/wiki/Chinese_punctuation#Punctuation_marks',
     replacements: {
       '!': '！',
       '"': '「」『』“”',
@@ -130,11 +132,13 @@ export const localisedPunctuation = {
           // so that the indicies match
           const stringValue = node.value.replaceAll('"', String.raw`\"`);
 
+          // for each group of languages (except _all)
           for (const [langs, d] of Object.entries(PUCTUATION)) {
             if (langs !== '_all' && !langs.split(',').includes(fileLang)) {
               continue;
             }
 
+            // for each banned character
             for (const [search, r] of Object.entries(d.replacements)) {
               const canAutoFix = r.length === 1;
               const replacements = [...r].join(' or ');
@@ -146,6 +150,7 @@ export const localisedPunctuation = {
                     'g',
                   );
 
+              // for every violation that we matched
               for (const match of stringValue.matchAll(re)) {
                 const source = r[0] || '';
                 const target = match[1] || '';
@@ -218,7 +223,7 @@ export const localisedPunctuation = {
       description: [
         'Encourages the use of language-specific punctuation, such as curly-quotes in English.',
         'If you want to add an //eslint-ignore directive, but cannot add comments to the json file,',
-        'then use http://npm.im/@rushstack/eslint-bulk',
+        'then use https://eslint.org/docs/latest/use/suppressions or https://npm.im/@rushstack/eslint-bulk',
       ].join(' '),
       url: 'https://github.com/k-yle/eslint-config-kyle/blob/main/rules/custom/localised-punctuation.js',
     },
