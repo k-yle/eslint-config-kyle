@@ -47,4 +47,5 @@ jobs:
           npm test
 
       - name: npm publish
-        uses: ./.github/actions/test
+        uses: k-yle/npm-publish@v1
+        if: ${{ matrix.node-version == '24.x' }}
