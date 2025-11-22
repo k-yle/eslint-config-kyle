@@ -40,19 +40,22 @@ runs:
       shell: bash
       run: npm install -g npm@latest
 
-    - name: Create git tag
-      if: ${{ steps.packageJson.outputs.local != steps.packageJson.outputs.remote && steps.packageJson.outputs.local != '' }}
-      uses: actions/github-script@v8
-      with:
-        script: |
-          const ref = `refs/tags/${require('package.json').version}`;
-          console.log('creating tag…', ref);
-          github.rest.git.createRef({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            ref,
-            sha: context.sha
-          });
+    # disabled because it would require push-access to the repo, and we'd like to
+    # keep things simple and avoid that.
+    #
+    # - name: Create git tag
+    #   if: ${{ steps.packageJson.outputs.local != steps.packageJson.outputs.remote && steps.packageJson.outputs.local != '' }}
+    #   uses: actions/github-script@v8
+    #   with:
+    #     script: |
+    #       const ref = `refs/tags/v${require('./package.json').version}`;
+    #       console.log('creating tag…', ref);
+    #       github.rest.git.createRef({
+    #         owner: context.repo.owner,
+    #         repo: context.repo.repo,
+    #         ref,
+    #         sha: context.sha
+    #       });
 
     - name: Publish to npm
       if: ${{ steps.packageJson.outputs.local != steps.packageJson.outputs.remote && steps.packageJson.outputs.local != '' }}
