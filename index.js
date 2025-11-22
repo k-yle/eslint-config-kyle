@@ -26,13 +26,14 @@ import { noRedundantJsxCurlyBraces } from './rules/custom/no-redundant-jsx-curly
 /** @type {import('@eslint/config-helpers').ConfigWithExtends[]} */
 const jsConfigs = [
   eslint.configs.recommended,
-  ...tsEslint.configs.strict,
+  .../** @type {never} */ (tsEslint.configs.strict),
   ...tsEslint.configs.stylistic,
   unicorn.configs.recommended,
   prettier,
   importPlugin.recommended,
   jsxA11y.flatConfigs.recommended,
   react.configs['recommended-typescript'],
+  reactHooks.configs.flat.recommended,
   {
     languageOptions: {
       globals: globals.browser,
@@ -45,7 +46,6 @@ const jsConfigs = [
           'self-closing-comp': selfClosingComp,
         },
       },
-      'react-hooks': reactHooks,
     },
     rules: {
       ...commonRules,

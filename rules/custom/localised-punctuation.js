@@ -89,7 +89,7 @@ const langFormatter = new Intl.DisplayNames(
  * @param {import("@humanwhocodes/momoa").StringNode} node
  * @param {string} source
  * @param {string} target
- * @returns {Parameters<Parameters<Rule['create']>[0]['report']>[0]['fix']}
+ * @returns {import('@eslint/core').RuleFixer}
  */
 const createFixer = (node, source, target) => (fixer) => {
   return fixer.replaceText(
@@ -146,7 +146,7 @@ export const localisedPunctuation = {
               const re = isRegExp(search)
                 ? new RegExp(search.slice(1, -1), 'g')
                 : new RegExp(
-                    `(?:[\\w\\s])(${escapeRegExp(search)})(?:[\\w\\s])`,
+                    String.raw`(?:[\w\s])(${escapeRegExp(search)})(?:[\w\s])`,
                     'g',
                   );
 

@@ -1,6 +1,7 @@
 /** @type {Record<'added' | 'removed', import('@eslint/config-helpers').Config['rules']>} */
 export const reactRules = {
   added: {
+    '@eslint-react/jsx-dollar': 'error',
     '@eslint-react/jsx-shorthand-boolean': 'error',
     '@eslint-react/jsx-shorthand-fragment': 'error',
     '@eslint-react/no-children-prop': 'error',
