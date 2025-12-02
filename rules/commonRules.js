@@ -34,6 +34,14 @@ export const commonRules = {
   'no-array-constructor': 'error',
   'no-buffer-constructor': 'error',
   'no-caller': 'error',
+  'no-console': [
+    // `console.log` will show a warning in dev, and will
+    // fail the CI if forgotten. If you explicitly want to
+    // keep it, change it to `console.info` (or any other
+    // method like `.warn`, `.error`)
+    isCI ? 'error' : 'warn',
+    { allow: Object.keys(console).filter((method) => method !== 'log') },
+  ],
   'no-constructor-return': 'error',
   'no-debugger': 'error',
   // disallow empty functions, except for standalone funcs/arrows
