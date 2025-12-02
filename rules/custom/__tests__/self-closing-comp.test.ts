@@ -8,7 +8,7 @@ const ruleTester = new RuleTester({
   languageOptions: { parserOptions: { ecmaFeatures: { jsx: true } } },
 });
 
-ruleTester.run('self-closing-comp', <never>selfClosingComp, {
+ruleTester.run('self-closing-comp', selfClosingComp, {
   invalid: [
     {
       code: 'var contentContainer = <div className="content"></div>;',

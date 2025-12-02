@@ -10,7 +10,8 @@ const ruleTester = new RuleTester({
 
 ruleTester.run(
   'no-redundant-jsx-curly-braces',
-  <never>noRedundantJsxCurlyBraces,
+  noRedundantJsxCurlyBraces,
+  //
   {
     invalid: [
       {

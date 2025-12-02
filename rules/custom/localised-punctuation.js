@@ -1,5 +1,6 @@
 import escapeRegExp from 'regexp.escape';
 // TODO: remove dependency once we drop support for node23
+import removeMarkdown from 'remove-markdown';
 
 /**
  * If the key starts and ends with a slash, then it is treated as a regex.
@@ -130,7 +131,9 @@ export const localisedPunctuation = {
         if (node.type === 'String') {
           // " must be escaped, so we need to add a literal \ to the string,
           // so that the indicies match
-          const stringValue = node.value.replaceAll('"', String.raw`\"`);
+          const originalValue = node.value.replaceAll('"', String.raw`\"`);
+          const stringValue = removeMarkdown(originalValue);
+          const anyMdRemoved = originalValue !== stringValue;
 
           // for each group of languages (except _all)
           for (const [langs, d] of Object.entries(PUCTUATION)) {
@@ -144,16 +147,23 @@ export const localisedPunctuation = {
               const replacements = [...r].join(' or ');
 
               const re = isRegExp(search)
-                ? new RegExp(search.slice(1, -1), 'g')
+                ? new RegExp(search.slice(1, -1), 'dg')
                 : new RegExp(
-                    String.raw`(?:[\w\s])(${escapeRegExp(search)})(?:[\w\s])`,
-                    'g',
+                    // skip if on either side of a number, since it could be a numeric separator
+                    String.raw`(?:[^0-9]|^)(${escapeRegExp(search)})(?:[^0-9]|$)`,
+                    'dg',
                   );
 
               // for every violation that we matched
               for (const match of stringValue.matchAll(re)) {
                 const source = r[0] || '';
                 const target = match[1] || '';
+
+                // typecast hack due to https://github.com/microsoft/TypeScript/pull/57042
+                const [colStart, colEnd] = /** @type {[number, number]} */ (
+                  /** @type {RegExpIndicesArray} */ (match.indices)[1]
+                );
+
                 context.report({
                   data: {
                     language,
@@ -164,19 +174,20 @@ export const localisedPunctuation = {
                     ? createFixer(node, target, source)
                     : undefined,
                   loc: {
-                    end: {
-                      column:
-                        node.loc.start.column +
-                        match.index +
-                        (isRegExp(search)
-                          ? search.length - 2
-                          : search.length - 1),
-                      line: node.loc.end.line,
-                    },
-                    start: {
-                      column: node.loc.start.column + match.index,
-                      line: node.loc.start.line,
-                    },
+                    // if any markdown was stripped, we can't reliably
+                    // get the col, so use the full string.
+                    end: anyMdRemoved
+                      ? node.loc.end
+                      : {
+                          column: node.loc.start.column + colEnd + 1,
+                          line: node.loc.end.line,
+                        },
+                    start: anyMdRemoved
+                      ? node.loc.start
+                      : {
+                          column: node.loc.start.column + colStart + 1,
+                          line: node.loc.start.line,
+                        },
                   },
                   messageId: 'error',
                   node,
