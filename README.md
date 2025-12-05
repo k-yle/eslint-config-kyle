@@ -38,19 +38,20 @@ And add this to your `tsconfig.json` file:
 }
 ```
 
-## Usage (Legacy)
+If you want to add custom rules/plugins, change `eslint.config.js` like so:
 
-```sh
-npm i -D eslint-config-kyle@22 eslint@8
-```
+```js
+import config from 'eslint-config-kyle';
 
-Add the following to `package.json`:
+export { default } from 'eslint-config-kyle';
 
-```json
-{
-  "eslintConfig": { "extends": "kyle" },
-  "prettier": "eslint-config-kyle/prettier"
-}
+config.push({
+  files: ['**/*.*({c,m}){j,t}s*(x)'],
+  rules: {
+    '@typescript-eslint/consistent-type-assertions': 'error',
+    // any custom rules/plugins/etc
+  },
+});
 ```
 
 ## VS Code configuration
