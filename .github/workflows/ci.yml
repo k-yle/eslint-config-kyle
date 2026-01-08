@@ -18,9 +18,6 @@ jobs:
       matrix:
         node-version: [20.19, 20.x, 22.x, 24.x, 25.x]
 
-    environment:
-      name: npm
-
     steps:
       - uses: actions/checkout@v6
 
