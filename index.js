@@ -63,7 +63,7 @@ const jsConfigs = [
     },
   },
   {
-    files: ['**/*.test.*', '**/*.cy.*'],
+    files: ['**/*.test.*', '**/*.bench.*', '**/*.cy.*'],
     name: 'eslint-config-kyle/test files',
     plugins: { vitest },
     rules: {

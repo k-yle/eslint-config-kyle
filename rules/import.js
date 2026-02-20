@@ -16,6 +16,7 @@ export const importRules = {
         devDependencies: [
           '**/*.test.*',
           '**/*.test*.*', // .test-d.ts is used by vitest's type-tests
+          '**/*.bench.*',
           '**/*.cy.*',
           '**/*.config.*',
           '**/scripts/**',
