@@ -122,6 +122,12 @@ export const commonRules = {
       selector:
         'LogicalExpression:matches([left.property.name="length"], [right.property.name="length"])',
     },
+    {
+      message:
+        'exported `const enum`s are a common source of confusion, since some bundlers will still ' +
+        'emit the declaration (but not the runtime value). Use a normal `enum` or union-type instead.',
+      selector: 'ExportNamedDeclaration > TSEnumDeclaration[const=true]',
+    },
   ],
   'no-return-assign': ['error', 'always'],
   'no-return-await': 'error',

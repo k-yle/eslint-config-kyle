@@ -14,3 +14,6 @@ export const A = () => {
     </>
   );
 };
+
+// eslint-disable-next-line no-restricted-syntax
+export const enum C {}
