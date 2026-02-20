@@ -16,6 +16,7 @@ export const unicornRules = {
         replacements: {
           arg: false, // well understood and never disambiguous.
           args: false, // well understood and never disambiguous.
+          ctx: false, // heavily used for <canvas /> rendering, never disambiguous.
           def: false, // reasonably common and unlikely to be disambiguous
           defs: false, // as above
           dev: false, // extremely common and never disambiguous
