@@ -13,25 +13,16 @@ export const unicornRules = {
       'warn',
       {
         checkFilenames: false, // so that it doesn't cry about `vite-env` or `.def.ts`
+        // the official list is full of terms that are not ambiguous, which is really unhelpful.
+        // we only want to warn about ambiguous terms (with >1 possible interpretation), or obscure
+        // abbreviations where there is a more standard alterantive. But it's not possible to import from
+        // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/rules/shared/abbreviations.js
+        // Therefore, we define our own list.
+        extendDefaultReplacements: false,
         replacements: {
-          arg: false, // well understood and never disambiguous.
-          args: false, // well understood and never disambiguous.
-          ctx: false, // heavily used for <canvas /> rendering, never disambiguous.
-          def: false, // reasonably common and unlikely to be disambiguous
-          defs: false, // as above
-          dev: false, // extremely common and never disambiguous
-          env: false, // well understood and never disambiguous. The alternative is long and unwieldy
-          envs: false, // as above
-          i: false, // in math-heavy code, short variables like i and j are arguably more readable than 'jindex'
-          j: false, // as above
-          param: false, // well understood and never disambiguous.
-          params: false, // well understood and never disambiguous.
-          prop: false, // well understood and never disambiguous.
-          props: false, // "props" implies something different to "properties" in react
-          ref: false, // "ref" is different to "reference" in OSM, and is a well known term in react
-          refs: false, // as above
-          str: false, // mappers/helpers that work on any arbitrary string should be allowed to use str
-          temp: false, // well understood and never disambiguous. However, we do ban "tmp", as it's less readable and semantically equivilant to "temp"
+          e: { error: true, event: true }, // ambiguous
+          evt: { event: true }, // non-standard abbreviation
+          idx: { index: true }, // non-standard abbreviation
         },
       },
     ],
