@@ -6,7 +6,6 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "downlevelIteration": true,
     "jsx": "react-jsxdev",
     "forceConsistentCasingInFileNames": true,
 
@@ -26,6 +25,7 @@
     "noUncheckedIndexedAccess": true,
     "noPropertyAccessFromIndexSignature": true,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
 
     /* ESM */
     "lib": ["esnext"], // explicitly add DOM if you need it
