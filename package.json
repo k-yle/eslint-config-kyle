@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kyle",
-  "version": "28.0.1",
+  "version": "29.0.0",
   "author": "Kyle Hensel",
   "description": "A sharable eslint config that I use",
   "license": "MIT",
@@ -62,6 +62,6 @@
     "vitest": "^4.1.8"
   },
   "peerDependencies": {
-    "eslint": "^10.4.1"
+    "eslint": "^9.22 || ^10.4.1"
   }
 }
