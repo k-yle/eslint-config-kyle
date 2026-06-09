@@ -14,7 +14,7 @@ const PUCTUATION = {
   },
 
   'cz,de': {
-    reference: 'http://chytreuvozovky.cz',
+    reference: 'https://chytreuvozovky.cz',
     replacements: { '"': '„“»«›‹', "'": '’' },
   },
   'en,pt,ru': {
@@ -113,7 +113,11 @@ const isRegExp = (search) =>
 export const localisedPunctuation = {
   create(context) {
     const fileLang =
-      context.filename.split(/[\\/]/).pop()?.split('.')[0]?.split('-')[0] || '';
+      context.filename
+        .split(/[\\/]/)
+        .pop()
+        ?.split('.', 1)[0]
+        ?.split('-', 1)[0] || '';
 
     // try to use the formatted language name if available
     let language = fileLang;
@@ -150,7 +154,7 @@ export const localisedPunctuation = {
                 ? new RegExp(search.slice(1, -1), 'dg')
                 : new RegExp(
                     // skip if on either side of a number, since it could be a numeric separator
-                    String.raw`(?:[^0-9]|^)(${escapeRegExp(search)})(?:[^0-9]|$)`,
+                    `(?:[^0-9]|^)(${escapeRegExp(search)})(?:[^0-9]|$)`,
                     'dg',
                   );
 

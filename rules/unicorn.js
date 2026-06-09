@@ -6,7 +6,7 @@ export const unicornRules = {
       'error',
       { onlyIfContainsSeparator: true }, // it's unnatural to use separators on the rhs of a demical point, and this rule doesn't allow that case to be disabled
     ],
-    'unicorn/prefer-export-from': ['error', { ignoreUsedVariables: true }], // turn on ignoreUsedVariables, should really be on by default
+    'unicorn/prefer-export-from': ['error', { checkUsedVariables: true }], // turn on checkUsedVariables, should really be on by default
     'unicorn/prefer-import-meta-properties': 'error',
     'unicorn/prefer-ternary': ['error', 'only-single-line'], // multiline cases can be more readable as if statements
     'unicorn/prevent-abbreviations': [
