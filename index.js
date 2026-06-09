@@ -4,6 +4,7 @@ import json from '@eslint/json';
 import css from '@eslint/css';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import { includeIgnoreFile } from '@eslint/compat';
+// TODO: import includeIgnoreFile from eslint/config when we drop support for v9
 import tsEslint from 'typescript-eslint';
 import unicorn from 'eslint-plugin-unicorn';
 import prettier from 'eslint-plugin-prettier/recommended';
@@ -12,7 +13,6 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import vitest from '@vitest/eslint-plugin';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import { flatConfigs as importPlugin } from 'eslint-plugin-import-x';
-import globals from 'globals';
 import { commonRules } from './rules/commonRules.js';
 import { unicornRules } from './rules/unicorn.js';
 import { importRules } from './rules/import.js';
@@ -35,9 +35,6 @@ const jsConfigs = [
   react.configs['recommended-typescript'],
   reactHooks.configs.flat.recommended,
   {
-    languageOptions: {
-      globals: globals.browser,
-    },
     name: 'eslint-config-kyle/custom rules',
     plugins: {
       k: {
@@ -65,7 +62,7 @@ const jsConfigs = [
   {
     files: ['**/*.test.*', '**/*.bench.*', '**/*.cy.*'],
     name: 'eslint-config-kyle/test files',
-    plugins: { vitest },
+    plugins: { vitest: /** @type {never} */ (vitest) },
     rules: {
       ...vitest.configs.recommended.rules,
       ...testRules.added,
@@ -85,6 +82,11 @@ const jsConfigs = [
     name: 'eslint-config-kyle/config-files',
     rules: {
       'import-x/no-anonymous-default-export': 'off',
+    },
+  },
+  {
+    linterOptions: {
+      reportUnusedDisableDirectives: 'error',
     },
   },
 ];
@@ -108,14 +110,12 @@ export default defineConfig(
   {
     files: ['**/*.css'],
     language: 'css/css',
-    name: 'eslint-config-kyle/css',
     ...css.configs.recommended,
   },
   {
     files: ['**/*.json', '**/*.jsonc'],
     ignores: ['**/package-lock.json'],
     language: 'json/jsonc',
-    name: 'eslint-config-kyle/json',
     ...json.configs.recommended,
   },
   {

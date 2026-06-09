@@ -128,6 +128,30 @@ export const commonRules = {
         'emit the declaration (but not the runtime value). Use a normal `enum` or union-type instead.',
       selector: 'ExportNamedDeclaration > TSEnumDeclaration[const=true]',
     },
+    {
+      message:
+        'Prefer the shorthand syntax for JSX props: Instead of `prop={true}`, use `prop`.',
+      selector:
+        "JSXAttribute[value.type='JSXExpressionContainer'][value.expression.value=true]",
+      // this rule from removed from @eslint-react from some bizarre reason…
+      // née @eslint-react/jsx-shorthand-boolean and react/jsx-boolean-value
+    },
+    {
+      message:
+        'Use the shorthand fragment syntax (`<>…</>`) instead of `<React.Fragment>…</React.Fragment>`.',
+      selector:
+        "JSXElement:has(> JSXOpeningElement[name.object.name='React'][name.property.name='Fragment']:not(:has(JSXAttribute)))",
+      // this rule from removed from @eslint-react from some bizarre reason…
+      // née @eslint-react/jsx-shorthand-fragment
+    },
+    {
+      message:
+        'Use the shorthand fragment syntax (`<>…</>`) instead of `<Fragment>…</Fragment>`.',
+      selector:
+        "JSXElement:has(> JSXOpeningElement[name.name='Fragment']:not(:has(JSXAttribute)))",
+      // this rule from removed from @eslint-react from some bizarre reason…
+      // née @eslint-react/jsx-shorthand-fragment
+    },
   ],
   'no-return-assign': ['error', 'always'],
   'no-return-await': 'error',
@@ -153,7 +177,6 @@ export const commonRules = {
   'no-useless-rename': 'error',
   'no-useless-return': 'error',
   'no-var': 'error',
-  'no-void': 'error',
   'no-warning-comments': [
     // FIX­ME comments should only fail the build in the CI
     // environment, not while developing locally.

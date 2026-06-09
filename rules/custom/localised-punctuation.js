@@ -104,7 +104,7 @@ const isRegExp = (search) =>
   search.startsWith('/') && search.endsWith('/') && search.length > 1;
 
 /**
- * @typedef {import('@eslint/json/types').JSONRuleDefinition<{
+ * @typedef {import('@eslint/json').JSONRuleDefinition<{
  *  MessageIds: 'error' | 'suggestion' | 'unexpected';
  *  RuleOptions: [];
  * }>} Rule
