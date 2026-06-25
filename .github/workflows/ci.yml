@@ -6,10 +6,6 @@ on:
       - "**"
   pull_request:
 
-permissions:
-  contents: read
-  id-token: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -48,7 +44,3 @@ jobs:
       - name: 🧪 Test
         run: |
           npm test
-
-      - name: npm publish
-        uses: k-yle/npm-publish@v1
-        if: ${{ matrix.node-version == '26.x' && matrix.eslint-version == '^10' }}
