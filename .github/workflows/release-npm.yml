@@ -28,7 +28,7 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
 
-      - uses: k-yle/npm-publish@3594cfe93eda10298ed97e4397d8d4a9a47d336c
+      - uses: k-yle/npm-publish@v2
         id: publish
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
