@@ -1,0 +1,5 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/refs/heads/main/schemas/manifest.json",
+  ".": "29.0.1",
+  "bootstrap-sha": "a38cdbbc31b25db470263e10b545c64d295d6b8c"
+}
